@@ -10,9 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         /* 기본 페이지 스타일 */
+        html {
+            scroll-snap-type: y mandatory;
+        }
         body {
             font-family: 'Noto Sans KR', 'Inter', sans-serif;
-            background-color: #111827;
+            background-color: #e5e7eb; /* 스크롤바 영역 배경색 */
         }
         /* 전체 화면을 채우는 섹션 스타일 */
         .section-page {
@@ -24,7 +27,8 @@
             padding: 5rem 1.5rem;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid #374151;
+            scroll-snap-align: start;
+            border-bottom: 1px solid #d1d5db;
         }
         /* 배경 스타일 */
         .hero-bg {
@@ -42,6 +46,16 @@
         .white-bg {
              background-color: #ffffff;
              color: #1f2937;
+        }
+
+        /* 헤더 자동 숨김 스타일 */
+        header {
+            transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+        }
+        .header-hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
         }
 
         /* ----- 데이터 통합 시각화 스타일 ----- */
@@ -149,7 +163,7 @@
     <!-- Main Content -->
     <main>
         <!-- Page 1: Hero Section (표지) -->
-        <section class="section-page hero-bg text-white text-center">
+        <section class="section-page hero-bg text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 1</div>
             <h2 class="text-5xl md:text-7xl font-bold leading-tight my-4">Project <span class="atlas-emphasis font-black">ATLAS</span></h2>
             <p class="text-2xl text-blue-400 font-semibold tracking-wide mt-24">Ontology Design Lab</p>
@@ -157,7 +171,7 @@
         </section>
         
         <!-- Page 2: Part 1 Intro -->
-        <section class="section-page hero-bg text-white text-center">
+        <section class="section-page hero-bg text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 2</div>
             <div class="text-center">
                 <p class="text-3xl text-blue-400 font-semibold tracking-wide">Part 1.</p>
@@ -166,99 +180,99 @@
         </section>
 
         <!-- Page 3: Market Context -->
-        <section class="section-page hero-bg text-white">
-            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 3</div>
+        <section class="section-page light-bg text-gray-800" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-500">Page 3</div>
             <div class="container mx-auto px-4 max-w-6xl">
                 <div class="text-center md:text-left mb-12">
-                    <h2 class="text-4xl md:text-5xl font-bold">광고 대행업, 생존의 기로에 서다</h2>
-                    <p class="mt-4 text-xl text-gray-300 max-w-3xl mx-auto md:mx-0">
-                        이제 <strong class="text-blue-400">업무 혁신/효율화</strong>는 선택이 아닌, 생존과 직결되는 필수 과제가 되었습니다.
+                    <h2 class="text-4xl md:text-5xl font-bold text-gray-900">광고 대행업, 생존의 기로에 서다</h2>
+                    <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto md:mx-0">
+                        이제 <strong class="text-blue-600">업무 혁신/효율화</strong>는 선택이 아닌, 생존과 직결되는 필수 과제가 되었습니다.
                     </p>
                 </div>
                 <div class="grid md:grid-cols-2 gap-8 items-start">
                     <div class="w-full space-y-6">
-                        <h2 class="text-2xl font-bold text-white mb-6">광고대행사 경영난의 <span class="text-red-400">주요 원인</span></h2>
-                        <div class="bg-gray-900/50 backdrop-blur-sm p-5 rounded-xl border border-red-500/30 shadow-lg flex items-start space-x-5">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">광고대행사 경영난의 <span class="text-red-600">주요 원인</span></h2>
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-start space-x-5">
                             <div class="flex-shrink-0">
-                                <svg class="h-10 w-10 text-red-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-10 w-10 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg text-red-400">경기 침체로 인한 광고예산 축소</h4>
-                                <p class="text-gray-300 mt-1 text-base">고금리, 고물가, 경기 둔화가 지속되며 기업 마케팅예산 삭감</p>
+                                <h4 class="font-bold text-lg text-red-600">경기 침체로 인한 광고예산 축소</h4>
+                                <p class="text-gray-600 mt-1 text-base">고금리, 고물가, 경기 둔화가 지속되며 기업 마케팅예산 삭감</p>
                             </div>
                         </div>
-                        <div class="bg-gray-900/50 backdrop-blur-sm p-5 rounded-xl border border-red-500/30 shadow-lg flex items-start space-x-5">
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-start space-x-5">
                             <div class="flex-shrink-0">
-                               <svg class="h-10 w-10 text-red-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                               <svg class="h-10 w-10 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg text-red-400">과도한 경쟁으로 수익성 악화</h4>
-                                <p class="text-gray-300 mt-1 text-base">제한된 물량 → 출혈 경쟁(최저가 입찰)</p>
+                                <h4 class="font-bold text-lg text-red-600">과도한 경쟁으로 수익성 악화</h4>
+                                <p class="text-gray-600 mt-1 text-base">제한된 물량 → 출혈 경쟁(최저가 입찰)</p>
                             </div>
                         </div>
-                        <div class="bg-gray-900/50 backdrop-blur-sm p-5 rounded-xl border border-red-500/30 shadow-lg flex items-start space-x-5">
+                        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-start space-x-5">
                             <div class="flex-shrink-0">
-                                <svg class="h-10 w-10 text-red-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <svg class="h-10 w-10 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg text-red-400">고질적인 인력 문제</h4>
-                                <p class="text-gray-300 mt-1 text-base">우수 인력 이탈 → 서비스 품질·조직 안정성 하락 → 악순환</p>
+                                <h4 class="font-bold text-lg text-red-600">고질적인 인력 문제</h4>
+                                <p class="text-gray-600 mt-1 text-base">우수 인력 이탈 → 서비스 품질·조직 안정성 하락 → 악순환</p>
                             </div>
                         </div>
                     </div>
                     <div class="w-full">
-                         <div class="bg-gray-900/70 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden border border-gray-700 mt-14">
-                            <table class="min-w-full text-sm text-white">
-                                <thead class="bg-gray-700 border-b-2 border-gray-600">
+                         <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200 mt-14">
+                            <table class="min-w-full text-sm text-gray-700">
+                                <thead class="bg-gray-100 border-b-2 border-gray-200">
                                     <tr>
                                         <th class="py-3 px-4 text-left font-semibold">회사명</th>
                                         <th class="py-3 px-4 text-left font-semibold">구분</th>
                                         <th class="py-3 px-4 text-left font-semibold">시기</th>
                                     </tr>
                                 </thead>
-                                <tbody class="divide-y divide-gray-800">
-                                    <tr class="hover:bg-gray-800/70 transition-colors">
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr class="hover:bg-gray-50 transition-colors">
                                         <td class="py-3 px-4 font-medium">엠포스</td>
                                         <td class="py-3 px-4">폐업</td>
                                         <td class="py-3 px-4">2025.6</td>
                                     </tr>
-                                    <tr class="bg-black/30 hover:bg-gray-800/50 transition-colors">
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
                                         <td class="py-3 px-4 font-medium">디노마드</td>
                                         <td class="py-3 px-4">기업회생</td>
                                         <td class="py-3 px-4">2025.2</td>
                                     </tr>
-                                    <tr class="hover:bg-gray-800/70 transition-colors">
+                                    <tr class="hover:bg-gray-50 transition-colors">
                                         <td class="py-3 px-4 font-medium">디블렌트</td>
                                         <td class="py-3 px-4">기업회생</td>
                                         <td class="py-3 px-4">2024.12</td>
                                     </tr>
-                                    <tr class="bg-black/30 hover:bg-gray-800/50 transition-colors">
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
                                         <td class="py-3 px-4 font-medium">이루다크리에이티브</td>
                                         <td class="py-3 px-4">파산</td>
                                         <td class="py-3 px-4">2024.11</td>
                                     </tr>
-                                    <tr class="hover:bg-gray-800/70 transition-colors">
+                                    <tr class="hover:bg-gray-50 transition-colors">
                                         <td class="py-3 px-4 font-medium">뉴데이즈</td>
                                         <td class="py-3 px-4">폐업</td>
                                         <td class="py-3 px-4">2024.9</td>
                                     </tr>
-                                    <tr class="bg-black/30 hover:bg-gray-800/50 transition-colors">
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
                                         <td class="py-3 px-4 font-medium">인터스텔라</td>
                                         <td class="py-3 px-4">폐업</td>
                                         <td class="py-3 px-4">2024.8</td>
                                     </tr>
-                                    <tr class="hover:bg-gray-800/70 transition-colors">
+                                    <tr class="hover:bg-gray-50 transition-colors">
                                         <td class="py-3 px-4 font-medium">농심기획</td>
                                         <td class="py-3 px-4">청산</td>
                                         <td class="py-3 px-4">2024.6</td>
                                     </tr>
-                                    <tr class="bg-black/30 hover:bg-gray-800/50 transition-colors">
+                                    <tr class="bg-gray-50 hover:bg-gray-100 transition-colors">
                                         <td class="py-3 px-4 font-medium">디디비코리아</td>
                                         <td class="py-3 px-4">영업종료</td>
                                         <td class="py-3 px-4">2024.6</td>
@@ -272,10 +286,10 @@
         </section>
 
         <!-- Page 4: Problem Intro -->
-        <section class="section-page hero-bg text-white text-center">
-            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-500">Page 4</div>
-            <h2 class="text-4xl md:text-5xl font-extrabold">잠자는 데이터 자산, 이대로 방치해도 괜찮을까요?</h2>
-            <p class="mt-8 text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+        <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 4</div>
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">잠자는 데이터 자산, 이대로 방치해도 괜찮을까요?</h2>
+            <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 업력 9년차 디지털퍼스트, 업력 5년차 디지털트리니티<br>
                 그동안 집행한 수많은 캠페인 데이터들, 지금 어디에, 어떻게 활용되고 있나요?
             </p>
@@ -285,64 +299,64 @@
                     <div class="silo silo-teal" style="width: 90px; height: 100px;">Campaign<br>Data</div>
                     <div class="silo silo-indigo" style="width: 120px; height: 150px;">Campaign<br>Data</div>
                     <div class="silo silo-purple" style="width: 100px; height: 130px;">Campaign<br>Data</div>
-                    <div class="text-3xl font-bold text-gray-500 leading-tight self-end pb-4">...</div>
+                    <div class="text-3xl font-bold text-gray-400 leading-tight self-end pb-4">...</div>
                 </div>
             </div>
-             <p class="mt-16 text-2xl text-blue-300 font-bold max-w-4xl leading-snug">
+             <p class="mt-16 text-2xl text-blue-600 font-bold max-w-4xl leading-snug">
                 지금 이 순간에도 생성되고 있는 데이터는 분산되고 단절된 채<br>
                 사일로에 갇혀 효율적으로 활용되지 못하고 있습니다.
             </p>
         </section>
 
         <!-- Page 5: Problem Details -->
-        <section class="section-page hero-bg text-white text-center">
-            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-500">Page 5</div>
+        <section class="section-page white-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 5</div>
             <div class="w-full max-w-6xl">
-                <h2 class="text-4xl md:text-5xl font-extrabold">방치된 데이터는 조직의 경쟁력을 저해시킵니다.</h2>
-                <p class="mt-8 text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">방치된 데이터는 조직의 경쟁력을 저해시킵니다.</h2>
+                <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                     데이터가 분산되어 통합되지 않으면 업무 효율이 악화되며, 
                     <br>이는 결국 기업에 실질적인 손해로 이어집니다.
                 </p>
-                <div class="inline-block bg-gray-200 text-gray-800 rounded-full px-6 py-2 font-bold mt-16 mb-10 shadow-lg text-lg">
+                <div class="inline-block bg-gray-100 text-gray-800 rounded-full px-6 py-2 font-bold mt-16 mb-10 shadow-md text-lg">
                     데이터 사일로가 불러오는 실무의 4가지 문제
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
-                    <div class="bg-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 flex items-center space-x-6">
+                    <div class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 flex items-center space-x-6 shadow-sm">
                         <div class="flex-shrink-0">
-                            <svg class="h-16 w-16 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <svg class="h-16 w-16 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-blue-300">늦은 의사결정</h3>
-                            <p class="text-gray-300 mt-2 text-lg">필요한 데이터를 수집하는데 시간이<br>오래 걸려 빠른 대응이 어렵습니다.</p>
+                            <h3 class="text-2xl font-bold text-blue-600">늦은 의사결정</h3>
+                            <p class="text-gray-600 mt-2 text-lg">필요한 데이터를 수집하는데 시간이<br>오래 걸려 빠른 대응이 어렵습니다.</p>
                         </div>
                     </div>
-                    <div class="bg-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 flex items-center space-x-6">
+                    <div class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 flex items-center space-x-6 shadow-sm">
                         <div class="flex-shrink-0">
-                            <svg class="w-16 h-16 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            <svg class="w-16 h-16 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-blue-300">캠페인 플래닝의 불확실성</h3>
-                            <p class="text-gray-300 mt-2 text-lg">경험이 적은 주니어는 판단을<br>내리기 어렵습니다.</p>
+                            <h3 class="text-2xl font-bold text-blue-600">캠페인 플래닝의 불확실성</h3>
+                            <p class="text-gray-600 mt-2 text-lg">경험이 적은 주니어는 판단을<br>내리기 어렵습니다.</p>
                         </div>
                     </div>
-                    <div class="bg-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 flex items-center space-x-6">
+                    <div class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 flex items-center space-x-6 shadow-sm">
                         <div class="flex-shrink-0">
-                           <svg class="w-16 h-16 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                           <svg class="w-16 h-16 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-blue-300">광고주 설득의 약화</h3>
-                            <p class="text-gray-300 mt-2 text-lg">성과 근거 없이 감에 의존한<br>제안이 반복됩니다.</p>
+                            <h3 class="text-2xl font-bold text-blue-600">광고주 설득의 약화</h3>
+                            <p class="text-gray-600 mt-2 text-lg">성과 근거 없이 감에 의존한<br>제안이 반복됩니다.</p>
                         </div>
                     </div>
-                    <div class="bg-gray-900/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-700 flex items-center space-x-6">
+                    <div class="bg-white/50 backdrop-blur-sm p-8 rounded-2xl border border-gray-200 flex items-center space-x-6 shadow-sm">
                         <div class="flex-shrink-0">
-                            <svg class="w-16 h-16 text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
+                            <svg class="w-16 h-16 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" /></svg>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold text-blue-300">인력 변경 시 혼선</h3>
-                            <p class="text-gray-300 mt-2 text-lg">데이터가 사람과 함께 이동하고<br>업무의 연속성 확보가 어려워집니다.</p>
+                            <h3 class="text-2xl font-bold text-blue-600">인력 변경 시 혼선</h3>
+                            <p class="text-gray-600 mt-2 text-lg">데이터가 사람과 함께 이동하고<br>업무의 연속성 확보가 어려워집니다.</p>
                         </div>
                     </div>
                 </div>
@@ -350,23 +364,23 @@
         </section>
 
         <!-- Page 6: Need for Solution -->
-        <section class="section-page hero-bg text-white text-center">
-            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-500">Page 6</div>
+        <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 6</div>
             <div class="w-full max-w-6xl">
-                <h2 class="text-4xl md:text-5xl font-extrabold leading-tight">
-                    잠자는 자산을 깨우는 방법 : <span class="text-blue-400">데이터 통합 !</span>
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                    잠자는 자산을 깨우는 방법 : <span class="text-blue-600">데이터 통합 !</span>
                 </h2>
-                <p class="mt-8 text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+                <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                     이제는 데이터를 '모으고, 바로 쓰기 위해' 통합해야 할 때 입니다.
                 </p>
                 <div class="mt-12 flex justify-center items-start gap-8">
                     <div class="text-center">
-                        <h3 class="text-xl font-bold mb-4 text-gray-400">Data Silo</h3>
+                        <h3 class="text-xl font-bold mb-4 text-gray-500">Data Silo</h3>
                         <div class="flex flex-col gap-6 items-center mt-6">
                             <div class="silo silo-blue" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div>
                             <div class="silo silo-indigo" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div>
                             <div class="silo silo-teal" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div>
-                            <div class="text-3xl font-bold text-gray-500 leading-tight -mt-4">.<br>.<br>.</div>
+                            <div class="text-3xl font-bold text-gray-400 leading-tight -mt-4">.<br>.<br>.</div>
                         </div>
                     </div>
                     <div class="w-24 pt-36">
@@ -381,9 +395,9 @@
                        </svg>
                     </div>
                     <div class="text-center">
-                        <h3 class="text-xl font-bold mb-4 text-gray-400">Data Integration</h3>
-                        <div id="integration-box" class="relative bg-gray-900/50 backdrop-blur-sm border-2 border-gray-700 rounded-2xl p-4" style="width: 450px; height: 450px;">
-                             <svg id="connection-lines" class="absolute inset-0 w-full h-full" style="opacity: 0.4;"></svg>
+                        <h3 class="text-xl font-bold mb-4 text-gray-500">Data Integration</h3>
+                        <div id="integration-box" class="relative bg-white/10 backdrop-blur-sm border-2 border-gray-300 rounded-2xl p-4" style="width: 450px; height: 450px;">
+                             <svg id="connection-lines" class="absolute inset-0 w-full h-full" style="opacity: 0.6;"></svg>
                             <div id="isilo1" class="absolute silo silo-blue" style="width: 100px; height: 100px; top: 38%; left: 35%; animation-delay: -1s;"><span>Campaign<br>Data</span></div>
                             <div id="isilo2" class="absolute silo silo-purple" style="width: 75px; height: 75px; top: 12%; left: 60%; animation-delay: -2.5s;"><span>Campaign<br>Data</span></div>
                             <div id="isilo3" class="absolute silo silo-teal" style="width: 80px; height: 80px; top: 15%; left: 8%; animation-delay: -4s;"><span>Campaign<br>Data</span></div>
@@ -398,64 +412,140 @@
             </div>
         </section>
 
-        <!-- Original Pages from 7 onwards -->
-        
-        <section class="section-page white-bg text-center">
-            <h2 class="text-5xl md:text-6xl font-black text-gray-900">ATLAS, 우리 데이터의 미래입니다.</h2>
-            <div class="grid md:grid-cols-2 gap-8 w-full max-w-6xl mt-16">
-                <div class="border-r-2 border-gray-200 pr-8 text-left">
-                    <h3 class="text-3xl font-bold mb-6">Before</h3>
-                    <ul class="space-y-4 text-lg text-gray-600">
-                        <li><strong class="font-bold w-24 inline-block">문제</strong> 데이터 파편화, 유실</li>
-                        <li><strong class="font-bold w-24 inline-block">목표</strong> 데이터 통합</li>
-                        <li><strong class="font-bold w-24 inline-block">목적</strong> 데이터 축적</li>
-                        <li><strong class="font-bold w-24 inline-block">과정</strong> 매체별 데이터 제공 항목 확인 후,<br>표준화 가능한 항목으로 데이터 통합</li>
-                        <li><strong class="font-bold w-24 inline-block">결과</strong> 파편화된 데이터의 나열,<br>혹시 모르니 찾아보는 단순 DB</li>
-                    </ul>
+        <!-- Page 7: Why now? -->
+        <section class="section-page white-bg text-gray-800" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 7</div>
+            <div class="w-full max-w-6xl text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">광고 데이터 통합, 왜 지금까지 못했을까?</h2>
+                <div class="mt-10 text-lg text-left max-w-4xl mx-auto space-y-8">
+                    <p class="flex items-start">
+                        <strong class="text-2xl text-blue-600 mr-3">1.</strong>
+                        <span>단순한 취합이 아니기 때문입니다.<br>
+                        <span class="ml-1">흩어진 데이터를 정리하고 분류·선별하는 복잡한 구조화 작업입니다.</span>
+                        </span>
+                    </p>
+                    <p class="flex items-start">
+                        <strong class="text-2xl text-blue-600 mr-3">2.</strong>
+                        <span>데이터 활용 목적이 불분명했기 때문입니다.<br>
+                        <span class="ml-1">사용자 니즈에 기반한 구조화가 없었기에, 데이터가 있어도 제대로 활용되지 못했습니다.</span>
+                        </span>
+                    </p>
                 </div>
-                <div class="text-left">
-                    <h3 class="text-3xl font-bold mb-6 text-blue-600">After (ATLAS)</h3>
-                    <ul class="space-y-4 text-lg text-gray-600">
-                        <li><strong class="font-bold w-24 inline-block">문제</strong> 데이터 파편화, 유실</li>
-                        <li><strong class="font-bold w-24 inline-block">목표</strong> <span class="text-blue-600">데이터 가치 극대화</span></li>
-                        <li><strong class="font-bold w-24 inline-block">목적</strong> <span class="text-blue-600">데이터 활용 방안 계획</span></li>
-                        <li><strong class="font-bold w-24 inline-block">과정</strong> 인터뷰를 통한 실사용자 니즈 확인,<br>광고 데이터 온톨로지 설계 후 표준화/통합</li>
-                        <li><strong class="font-bold w-24 inline-block">결과</strong> <span class="text-blue-600">유기적으로 연결된 정보와 지식,</span><br><span class="text-blue-600">데이터에 기반한 의사결정 도구</span></li>
-                    </ul>
+
+                <div class="mt-12 w-full space-y-6">
+                    <div class="grid grid-cols-12 items-center gap-4 text-center">
+                        <div class="col-start-2 col-span-4 text-2xl font-bold text-gray-500">As Is</div>
+                        <div class="col-start-7 col-span-5 text-2xl font-bold text-blue-600">To Be</div>
+                    </div>
+                    <div class="grid grid-cols-12 items-stretch gap-4">
+                        <div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">목적</div>
+                        <div class="col-span-4 bg-gray-100 p-4 rounded-lg text-center flex items-center justify-center text-lg">데이터 통합</div>
+                        <div class="col-span-1 text-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div>
+                        <div class="col-span-5 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-center flex items-center justify-center"><strong class="text-blue-600 text-xl font-bold">데이터 가치 극대화</strong></div>
+                    </div>
+                    <div class="grid grid-cols-12 items-stretch gap-4">
+                        <div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">과정</div>
+                        <div class="col-span-4 bg-gray-100 p-4 rounded-lg text-left flex items-center text-base">
+                            <ol class="list-decimal list-inside space-y-1">
+                                <li>매체별 데이터 제공 항목 확인</li>
+                                <li>표준화 가능한 항목으로 데이터 통합</li>
+                            </ol>
+                        </div>
+                        <div class="col-span-1 text-center self-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div>
+                        <div class="col-span-5 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-left flex items-center text-lg">
+                             <ol class="list-decimal list-inside space-y-1">
+                                <li class="text-blue-600 font-bold">실사용자 니즈 확인</li>
+                                <li>매체별 데이터 제공 항목 확인</li>
+                                <li>표준화 필요한 항목으로 데이터 통합</li>
+                            </ol>
+                        </div>
+                    </div>
+                     <div class="grid grid-cols-12 items-stretch gap-4">
+                        <div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">결과</div>
+                        <div class="col-span-4 bg-gray-100 p-4 rounded-lg text-left flex items-center text-base">파편화된 데이터의 나열<br>히스토리 확인 가능한 데이터 저장/조회 도구</div>
+                        <div class="col-span-1 text-center self-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div>
+                        <div class="col-span-5 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-left flex items-center text-lg">
+                            <strong class="text-blue-600">유기적으로 연결된 정보와 지식<br>데이터에 기반한 의사결정 도구</strong>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <section class="section-page light-bg text-center">
+        
+        <!-- Page 8: Part 2 Intro (New 간지) -->
+        <section class="section-page hero-bg text-white text-center" data-theme="dark">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 8</div>
+            <div class="text-center">
+                <p class="text-3xl text-blue-400 font-semibold tracking-wide">Part 2.</p>
+                <h2 class="text-5xl md:text-6xl font-bold mt-4">우리의 해결책, Project ATLAS</h2>
+            </div>
+        </section>
+        
+        <!-- Page 9: Project Intro (New Design) -->
+        <section class="section-page hero-bg text-white text-center" data-theme="dark">
+            <div id="starfield"></div>
+            <div id="starfield2"></div>
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 9</div>
+            <div class="mb-4 animate-reveal animate-logo">
+                <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                         <linearGradient id="coreGradient" x1="0.5" y1="0" x2="0.5" y2="1">
+                            <stop offset="0%" style="stop-color: #2dd4bf"/>
+                            <stop offset="100%" style="stop-color: #14b8a6"/>
+                        </linearGradient>
+                    </defs>
+                     <g transform="translate(0, 5)">
+                        <path d="M50 20 L80 80 L20 80 Z" stroke="url(#coreGradient)" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+                        <path d="M35 68 H65" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                    </g>
+                </svg>
+            </div>
+            <h2 class="text-5xl md:text-7xl font-black text-white animate-reveal animate-title">Project ATLAS</h2>
+            <p class="mt-4 text-2xl text-gray-400 tracking-wider animate-reveal animate-subtitle">
+                <span class="atlas-highlight">A</span>ll-in-one <span class="atlas-highlight">T</span>otal <span class="atlas-highlight">L</span>inkage for <span class="atlas-highlight">A</span>d <span class="atlas-highlight">S</span>ystems
+            </p>
+            <p class="mt-12 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-reveal animate-desc">
+                ATLAS는 파편화되고 유실되는 전사 데이터를 통합하여<br>
+                <strong class="text-blue-400">데이터 자산의 가치를 극대화</strong>하기 위해 시작한 프로젝트입니다.
+            </p>
+        </section>
+        
+        <!-- Page 10: Process Overview -->
+        <section class="section-page light-bg text-center" data-theme="light">
+             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 10</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">ATLAS 캠페인 데이터 통합 과정</h2>
             <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                ATLAS는 온톨로지 기반으로 데이터를 구조화하고, 매체별로 상이하게 수집되던 데이터를 표준화·정규화하여 일관성, 신뢰도를 확보했습니다. 또한, 데이터 라벨링을 통해 활용성​을 크게 향상시켰습니다.
+                ATLAS는 온톨로지 기반으로 데이터를 구조화하고, 매체별로 상이하게 수집되던 데이터를<br>표준화·정규화하여 일관성, 신뢰도를 확보했습니다.<br>또한, 데이터 라벨링을 통해 활용성​을 크게 향상시켰습니다.
             </p>
-            <div class="mt-12 w-full max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-blue-600 text-white p-6 rounded-lg text-center flex flex-col justify-center items-center h-40">
-                    <h3 class="font-bold text-2xl">데이터 구조화</h3>
-                    <p class="text-sm mt-2">(온톨로지)</p>
+            <div class="mt-12 w-full max-w-5xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-blue-600 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-48 shadow-lg">
+                    <h3 class="font-bold text-3xl">데이터<br>구조화</h3>
+                    <p class="text-sm mt-2 font-semibold">(온톨로지)</p>
                 </div>
-                <div class="bg-blue-500 text-white p-6 rounded-lg text-center flex flex-col justify-center items-center h-40">
-                    <h3 class="font-bold text-2xl">데이터 표준화</h3>
+                <div class="bg-blue-500 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-48 shadow-lg">
+                    <h3 class="font-bold text-3xl">데이터<br>표준화</h3>
                 </div>
-                <div class="bg-blue-400 text-white p-6 rounded-lg text-center flex flex-col justify-center items-center h-40">
-                    <h3 class="font-bold text-2xl">데이터 정규화</h3>
+                <div class="bg-blue-400 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-48 shadow-lg">
+                    <h3 class="font-bold text-3xl">데이터<br>정규화</h3>
                 </div>
-                <div class="bg-blue-300 text-white p-6 rounded-lg text-center flex flex-col justify-center items-center h-40">
-                    <h3 class="font-bold text-2xl">데이터 라벨링</h3>
+                <div class="bg-blue-300 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-48 shadow-lg">
+                    <h3 class="font-bold text-3xl">데이터<br>라벨링</h3>
                 </div>
             </div>
         </section>
 
-        <section class="section-page white-bg">
+        <!-- Page 11: Ontology -->
+        <section class="section-page white-bg" data-theme="light">
+             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 11</div>
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">1. 온톨로지 기반으로 데이터를 구조화</h2>
                 <img src="https://storage.googleapis.com/assistive-research/images/15a452d3-2e06-44c1-8404-58580252b834.png" alt="캠페인 데이터 온톨로지 구조도" class="rounded-lg shadow-xl mx-auto w-full max-w-7xl" onerror="this.onerror=null;this.src='https://placehold.co/1200x700/FFFFFF/1D4ED8?text=Error';">
             </div>
         </section>
         
-        <section class="section-page light-bg">
+        <!-- Page 12: Standardization -->
+        <section class="section-page light-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 12</div>
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">2. 데이터 표준화</h2>
                 <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">데이터 표준화를 위해, 매체에서 제공되는 데이터 항목을 세부적으로 파악합니다.<br>데이터 항목은 무엇이며, 해당 데이터 항목을 어느 수준까지 제공하는지 세부 확인합니다. 필요한 항목이 대시보드/리포트에서 확인되지 않는 경우, API로 제공되는 항목인지 확인합니다.</p>
@@ -463,80 +553,29 @@
             </div>
         </section>
         
-        <section class="section-page white-bg">
-                <div class="container mx-auto px-6 text-center">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">3. 데이터 정규화 & 4. 데이터 라벨링</h2>
-                    <div class="grid md:grid-cols-2 gap-8 mt-12 w-full max-w-7xl">
-                        <div>
-                            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 text-left mb-4">데이터 정규화</h3>
-                            <p class="text-left text-lg text-gray-600">데이터 정규화를 위해, 매체에서 제공되는 분석기준 항목의 데이터 구분값을 세부적으로 파악합니다.</p>
-                            <img src="https://storage.googleapis.com/assistive-research/images/db58f276-8098-4c3e-8120-1e5b38ed6a37.png" alt="데이터 정규화 예시" class="rounded-lg shadow-xl mx-auto w-full mt-4" onerror="this.onerror=null;this.src='https://placehold.co/500x300/FFFFFF/1D4ED8?text=Error';">
-                        </div>
-                        <div>
-                            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 text-left mb-4">데이터 라벨링 (AI 자동화)</h3>
-                            <p class="text-left text-lg text-gray-600">데이터 라벨링을 기존의 수작업 방식에서 AI기술을 도입한 자동화 방식으로 전환합니다.</p>
-                            <img src="https://storage.googleapis.com/assistive-research/images/f34f71a4-9271-464a-8f74-cc5e3646da91.png" alt="AI 데이터 라벨링 예시" class="rounded-lg shadow-xl mx-auto w-full mt-4" onerror="this.onerror=null;this.src='https://placehold.co/500x300/FFFFFF/1D4ED8?text=Error';">
-                        </div>
+        <!-- Page 13: Normalization & Labeling -->
+        <section class="section-page white-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 13</div>
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">3. 데이터 정규화 & 4. 데이터 라벨링</h2>
+                <div class="grid md:grid-cols-2 gap-8 mt-12 w-full max-w-7xl">
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 text-left mb-4">데이터 정규화</h3>
+                        <p class="text-left text-lg text-gray-600">데이터 정규화를 위해, 매체에서 제공되는 분석기준 항목의 데이터 구분값을 세부적으로 파악합니다.</p>
+                        <img src="https://storage.googleapis.com/assistive-research/images/db58f276-8098-4c3e-8120-1e5b38ed6a37.png" alt="데이터 정규화 예시" class="rounded-lg shadow-xl mx-auto w-full mt-4" onerror="this.onerror=null;this.src='https://placehold.co/500x300/FFFFFF/1D4ED8?text=Error';">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-800 text-left mb-4">데이터 라벨링 (AI 자동화)</h3>
+                        <p class="text-left text-lg text-gray-600">데이터 라벨링을 기존의 수작업 방식에서 AI기술을 도입한 자동화 방식으로 전환합니다.</p>
+                        <img src="https://storage.googleapis.com/assistive-research/images/f34f71a4-9271-464a-8f74-cc5e3646da91.png" alt="AI 데이터 라벨링 예시" class="rounded-lg shadow-xl mx-auto w-full mt-4" onerror="this.onerror=null;this.src='https://placehold.co/500x300/FFFFFF/1D4ED8?text=Error';">
                     </div>
                 </div>
-        </section>
-
-        <section class="section-page hero-bg text-white text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-white">광고 대행업의 경쟁력,<br>업무 효율화가 기업 생존과 직결될 것</h2>
-            <div class="mt-8 text-left max-w-5xl grid md:grid-cols-3 gap-4">
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <h4 class="font-bold text-lg text-yellow-400">경기 침체로 인한 광고예산 축소</h4>
-                    <p class="text-gray-300 text-sm mt-1">고금리, 고물가, 경기 둔화가 지속되며 기업 마케팅예산 삭감</p>
-                </div>
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <h4 class="font-bold text-lg text-yellow-400">과도한 경쟁으로 수익성 악화</h4>
-                    <p class="text-gray-300 text-sm mt-1">제한된 물량 → 출혈 경쟁(최저가 입찰)</p>
-                </div>
-                <div class="bg-gray-800 p-4 rounded-lg">
-                    <h4 class="font-bold text-lg text-yellow-400">고질적인 인력 문제</h4>
-                    <p class="text-gray-300 text-sm mt-1">우수 인력 이탈 → 서비스 품질·조직 안정성 하락 → 악순환</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-page white-bg text-center">
-            <div class="w-full max-w-7xl">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">가장 먼저 무엇을 만들면 좋을까요?</h2>
-                <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Digital First · Digital Trinity 내 9개 팀, 총 21명과의 대면 인터뷰 결과,<br>가장 시급한 Pain Point는 **‘레퍼런스 부족으로 인한 매체 운영 및 광고주 대응의 어려움’** 으로 나타났습니다.</p>
-                <img src="https://storage.googleapis.com/assistive-research/images/fbb0f845-f9be-44df-9e9b-a3203c94bb8b.png" alt="실무자 Pain Point 인터뷰 결과" class="rounded-lg shadow-xl mx-auto w-full max-w-6xl mt-12" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/FFFFFF/1D4ED8?text=Error';">
             </div>
         </section>
         
-        <section class="section-page light-bg text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">현업 중심의 두 가지 솔루션을 기획했습니다</h2>
-            <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">최고의 성과를 낸 레퍼런스 데이터를 기반으로 자동화를 구현해 효율성과 정확성을 높입니다.</p>
-            <div class="mt-12 grid md:grid-cols-2 gap-12 max-w-7xl">
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">미디어 믹스 자동화 시스템 (가제)</h3>
-                    <img src="https://storage.googleapis.com/assistive-research/images/e760c679-b8ae-4f91-89e4-080c102a970e.png" alt="미디어 믹스 자동화 시스템 UI" class="rounded-lg shadow-2xl" onerror="this.onerror=null;this.src='https://placehold.co/600x450/F3F4F6/1D4ED8?text=Error';">
-                </div>
-                <div>
-                    <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">소재 성과 및 레퍼런스 기반 추천 시스템</h3>
-                    <img src="https://storage.googleapis.com/assistive-research/images/8470a9dd-482a-4467-910f-6284f67d4e51.png" alt="소재 레퍼런스 추천 시스템 UI" class="rounded-lg shadow-2xl" onerror="this.onerror=null;this.src='https://placehold.co/600x450/F3F4F6/1D4ED8?text=Error';">
-                </div>
-            </div>
-        </section>
-        
-        <section class="section-page white-bg text-center">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">이 시스템, 얼마나 효율적이고 수익성이 있을까요?</h2>
-                <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                    시간적 리소스를 N% 감소시킬 수 있을 것으로 기대하며,<br>
-                    이는 마진율 7% 기준, N원 절감 → N원 매출 증가 효과와 동일합니다.
-                </p>
-        </section>
-        
-        <section class="section-page light-bg text-center">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">Project ATLAS는 앞으로도 계속 진화합니다.</h2>
-                <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">지속적인 고도화와 프로덕트 확장을 통해 더 큰 가치를 만들어갑니다.</p>
-                <img src="https://storage.googleapis.com/assistive-research/images/50849ed7-6cde-4796-9051-931ebc126d40.png" alt="프로덕트 확장 계획" class="rounded-lg shadow-xl mx-auto w-full max-w-5xl mt-12" onerror="this.onerror=null;this.src='https://placehold.co/1000x500/F3F4F6/1D4ED8?text=Error';">
-        </section>
-        
-        <section class="section-page hero-bg text-white text-center">
+        <!-- Page 14: Vision -->
+        <section class="section-page hero-bg text-white text-center" data-theme="dark">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 14</div>
             <h2 class="text-5xl md:text-6xl font-black">ATLAS, 우리 데이터의 미래입니다.</h2>
             <p class="mt-8 text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
                 ATLAS는 단순한 데이터 통합 DB를 넘어, 자동화 기반의 업무 혁신을 이끌며,<br>
@@ -545,7 +584,9 @@
             <img src="https://storage.googleapis.com/assistive-research/images/15a452d3-2e06-44c1-8404-58580252b834.png" alt="디지털 트윈 비전 이미지" class="rounded-lg shadow-xl mx-auto w-full max-w-6xl mt-12" onerror="this.onerror=null;this.src='https://placehold.co/1200x600/111827/FFFFFF?text=Error';">
         </section>
         
-        <section class="section-page hero-bg text-white text-center" style="background-color: #000; background-image: none;">
+        <!-- Page 15: Thank You -->
+        <section class="section-page hero-bg text-white text-center" data-theme="dark" style="background-color: #000; background-image: none;">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 15</div>
             <h2 class="text-5xl font-bold">Thank You</h2>
             <p class="mt-8 text-gray-400">Ontology Design Lab</p>
             <p class="mt-2 text-gray-500">dfn.tw_dcx@igaworks.com</p>
@@ -553,10 +594,41 @@
         
     </main>
     <script>
+        // 헤더 자동 숨김 스크립트
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('header');
+            if (!header) return;
+
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const theme = entry.target.dataset.theme;
+                        if (theme === 'dark') {
+                            header.classList.add('header-hidden');
+                        } else {
+                            header.classList.remove('header-hidden');
+                        }
+                    }
+                });
+            }, options);
+
+            document.querySelectorAll('.section-page').forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // 데이터 통합 시각화 연결선 스크립트
         window.addEventListener('load', () => {
             const container = document.getElementById('integration-box');
+            if (!container) return;
             const svg = document.getElementById('connection-lines');
-            if (!container || !svg) return;
+            if (!svg) return;
 
             const getCenterPoint = (id) => {
                 const silo = document.getElementById(id);
