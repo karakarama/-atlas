@@ -218,6 +218,10 @@
             border-bottom: 2px solid #3b82f6;
             padding-bottom: 0.75rem;
         }
+        @keyframes pop-in {
+            0% { opacity: 0; transform: scale(0.8) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
         .item-chip {
             background-color: #eef2ff;
             color: #4338ca;
@@ -225,11 +229,13 @@
             padding: 0.5rem 0.75rem;
             border-radius: 9999px;
             text-align: center;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             white-space: nowrap;
+            opacity: 0;
+            animation: pop-in 0.5s ease-out forwards;
         }
 
-        /* Page 16: Process Timeline */
+        /* Page 17: Process Timeline */
         .timeline-wrapper {
             background-color: white; padding: 2rem 2.5rem; border-radius: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); margin-bottom: 1rem; width: 100%; max-width: 1100px; margin-left: auto; margin-right: auto;
             display: flex; flex-direction: column; justify-content: center; gap: 1rem;
@@ -246,7 +252,7 @@
         .timeline-segment:hover { transform: scale(1.12); box-shadow: 0 12px 30px rgba(0,0,0,0.5); z-index: 10; }
         .timeline-percentage { font-size: 1rem; font-weight: 500; margin-top: auto; padding-top: 4px; }
         
-        /* Page 17 */
+        /* Page 18 */
         .donut-chart-path {
             stroke-dasharray: 0, 100;
             animation: fill-donut 2s 0.5s ease-out forwards;
@@ -271,7 +277,7 @@
             -webkit-text-fill-color: transparent;
         }
         
-        /* Page 18: Pain Point Table */
+        /* Page 19: Pain Point Table */
         .pain-point-callout-box { background-color: #e5e7eb; color: #333; border-radius: 9999px; padding: 0.75rem 1.5rem; font-weight: 700; font-size: 1.125rem; margin: 2rem 0; display: inline-block; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 80%; }
         .pain-point-table-container { width: 100%; max-width: 1000px; margin: 0 auto; }
         .pain-point-box-container { display: flex; align-items: stretch; gap: 1.5rem; }
@@ -290,7 +296,7 @@
         .pain-point-table-unified .highlight-row .highlight-count { color: #312e81; font-size: 1.2em; }
 
 
-        /* Page 19: New Purpose Table */
+        /* Page 20: New Purpose Table */
         .new-purpose-table { background-color: #ffffff; border-collapse: collapse; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; max-width: 1100px; }
         .new-purpose-table th { background-color: #3b82f6; color: white; font-size: 1.25rem; font-weight: 700; padding: 1.25rem; border: 1px solid #e0e0e0; text-align: center; vertical-align: middle; white-space: nowrap; }
         .new-purpose-table td { padding: 1.25rem; border: 1px solid #e0e0e0; color: #374151; font-size: 1.125rem; line-height: 1.6; vertical-align: middle; text-align: center; }
@@ -308,14 +314,14 @@
         .new-purpose-table tbody tr:hover { background-color: #dbeafe; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 1; position: relative; color: #1c3d64; }
         .new-purpose-table tbody tr:hover * { color: inherit; }
 
-        /* Page 20: Screenshot Grid */
+        /* Page 21: Screenshot Grid */
         .screenshot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; max-width: 1000px; width: 100%; }
         .screenshot-item { text-align: center; border-radius: 1rem; position: relative; overflow: hidden; width: 450px; height: 280px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         .screenshot-item img { border-radius: 0.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.15); width: 100%; height: 100%; object-fit: cover; display: block; }
         .screenshot-overlay { position: absolute; inset: 0; background-color: rgba(0, 0, 0, 0.65); border-radius: 0.5rem; z-index: 1; }
         .screenshot-item p { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; color: white; font-size: 1.375rem; font-weight: 600; line-height: 1.4; white-space: nowrap; }
         
-        /* Page 21: Marquee Animation */
+        /* Page 22: Marquee Animation */
         .marquee-wrapper {
             width: 100%;
             overflow: hidden;
@@ -386,19 +392,21 @@
     </header>
 
     <main>
+        <!-- Page 1 -->
         <section class="section-page hero-bg-final text-center" data-theme="dark">
             <div class="particle-canvas"></div>
-            <div class="relative z-10 flex flex-col items-center justify-center h-full">
+            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full">
                 <div class="flex-grow flex flex-col items-center justify-center">
-                    <h2 class="text-6xl md:text-8xl font-black leading-tight my-4 project-atlas-title-effect"><span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span></h2>
+                     <h2 class="text-6xl md:text-8xl font-black leading-tight my-4 project-atlas-title-effect"><span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span></h2>
                 </div>
-                <div class="pb-24">
+                <div class="absolute bottom-20 text-center">
                     <p class="text-2xl text-indigo-300 font-semibold tracking-wide">Ontology Design Lab</p>
                     <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mt-2">2025.06.24</p>
                 </div>
             </div>
         </section>
         
+        <!-- Page 2 -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 2</div>
             <div class="text-center">
@@ -407,6 +415,7 @@
             </div>
         </section>
 
+        <!-- Page 3 -->
         <section class="section-page light-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-500">Page 3</div>
             <div class="container mx-auto px-4 max-w-6xl">
@@ -451,6 +460,7 @@
             </div>
         </section>
 
+        <!-- Page 4 -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 4</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">잠자는 데이터 자산, 이대로 방치해도 괜찮을까요?</h2>
@@ -467,6 +477,7 @@
             <p class="mt-16 text-2xl md:text-3xl text-blue-600 font-bold max-w-4xl leading-snug">지금 이 순간에도 생성되고 있는 데이터는 분산되고 단절된 채<br>사일로에 갇혀 효율적으로 활용되지 못하고 있습니다.</p>
         </section>
 
+        <!-- Page 5 -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 5</div>
             <div class="w-full max-w-6xl">
@@ -494,6 +505,7 @@
             </div>
         </section>
         
+        <!-- Page 6 -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 6</div>
             <div class="w-full max-w-6xl">
@@ -511,6 +523,7 @@
             </div>
         </section>
 
+        <!-- Page 7 -->
         <section class="section-page light-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 7</div>
             <div class="w-full max-w-6xl text-center">
@@ -528,6 +541,7 @@
             </div>
         </section>
 
+        <!-- Page 8 -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 8</div>
             <div class="text-center">
@@ -536,6 +550,7 @@
             </div>
         </section>
 
+        <!-- Page 9 -->
         <section class="section-page project-intro-bg" data-theme="dark">
             <canvas id="starfield-canvas"></canvas>
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 9</div>
@@ -554,9 +569,7 @@
                         </g>
                     </svg>
                 </div>
-                <h2 class="text-6xl md:text-8xl font-black animate-reveal animate-title mb-8 project-atlas-title-effect">
-                    <span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span>
-                </h2>
+                <h2 class="text-6xl md:text-8xl font-black text-white animate-reveal animate-title mb-8 project-atlas-title-effect">Project ATLAS</h2>
                 <p class="mt-4 text-2xl text-gray-400 tracking-wider animate-reveal animate-subtitle">
                     <span class="atlas-highlight">A</span>ll-in-one <span class="atlas-highlight">T</span>otal <span class="atlas-highlight">L</span>inkage for <span class="atlas-highlight">A</span>d <span class="atlas-highlight">S</span>ystems
                 </p>
@@ -567,6 +580,7 @@
             </div>
         </section>
 
+        <!-- Page 10 -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 10</div>
             <div class="container mx-auto px-4 text-center flex flex-col justify-center items-center">
@@ -589,16 +603,18 @@
             </div>
         </section>
         
+        <!-- Page 11 -->
         <section class="section-page white-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 11</div>
             <div class="container mx-auto px-6 text-center flex flex-col justify-center h-full">
                 <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">Step1. 온톨로지 기반 데이터 구조화</h2>
                 </div>
-                <img src="images/ontology.png" alt="온톨로지 구조도" class="rounded-lg mx-auto w-full max-w-7xl h-auto object-contain" style="max-height: 65vh;">
+                <img src="https://i.imgur.com/gY5zP0x.png" alt="온톨로지 구조도" class="rounded-lg mx-auto w-full max-w-7xl h-auto object-contain" style="max-height: 65vh;" onerror="this.onerror=null;this.src='https://placehold.co/1200x700/cccccc/333333?text=Ontology+Diagram';">
             </div>
         </section>
 
+        <!-- Page 12 -->
         <section class="section-page light-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 12</div>
             <div class="container mx-auto px-6 text-center w-full flex flex-col justify-center h-full">
@@ -616,6 +632,7 @@
             </div>
         </section>
 
+        <!-- Page 13 -->
         <section class="section-page light-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 13</div>
             <div class="container mx-auto px-6 text-center flex flex-col items-center justify-center h-full">
@@ -624,16 +641,17 @@
                     <p class="page-subtitle mt-4">분석에 유용한 항목을 중심으로 매체별 데이터를 선별·정리해 하나의 기준으로 정규화했습니다.</p>
                 </div>
                 <div class="w-full max-w-screen-lg overflow-hidden">
-                    <div class="flex flex-nowrap justify-center gap-8 -mr-24">
+                    <div class="flex flex-nowrap justify-center items-stretch gap-8 -ml-32">
+                        <div class="flex-shrink-0 normalization-table w-[175px] opacity-50"><div class="normalization-table-header">...</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td>...</td></tr><tr><td>...</td></tr><tr><td>...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td>...</td></tr></tbody></table></div></div>
                         <div class="flex-shrink-0 normalization-table"><div class="normalization-table-header">연령 구분 정규화</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td class="font-bold w-1/4">Moment</td><td>15-19, 20-24, 25-29...</td></tr><tr><td class="font-bold w-1/4">Meta</td><td>13-17, 18-24, 25-34...</td></tr><tr><td class="font-bold w-1/4">Google</td><td>18-24, 25-34, 35-44...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td class="font-bold text-blue-800 w-1/4">통합 기준</td><td class="font-bold text-blue-800">13-17, 18-24, 25-34, 35-44...</td></tr></tbody></table></div></div>
                         <div class="flex-shrink-0 normalization-table"><div class="normalization-table-header">기기 구분 정규화</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td class="font-bold w-1/4">Moment</td><td>Android, iOS</td></tr><tr><td class="font-bold w-1/4">Meta</td><td>데스크톱, Android 스마트폰...</td></tr><tr><td class="font-bold w-1/4">Google</td><td>컴퓨터, 휴대전화, 태블릿...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td class="font-bold text-blue-800 w-1/4">통합 기준</td><td class="font-bold text-blue-800">PC, Mobile, TV, 기타</td></tr></tbody></table></div></div>
                         <div class="flex-shrink-0 normalization-table"><div class="normalization-table-header">지역 구분 정규화</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td class="font-bold w-1/4">Moment</td><td>서울특별시, 경기도, 제주특별자치도, 해외, 알 수 없음</td></tr><tr><td class="font-bold w-1/4">Meta</td><td>KR, US, HK, TH</td></tr><tr><td class="font-bold w-1/4">Google</td><td>대한민국, 미국, 홍콩, 대만</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td class="font-bold text-blue-800 w-1/4">통합 기준</td><td class="font-bold text-blue-800">대한민국, 미국, 홍콩, 대만, 기타</td></tr></tbody></table></div></div>
-                        <div class="flex-shrink-0 normalization-table w-[175px] opacity-50"><div class="normalization-table-header">...</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td>...</td></tr><tr><td>...</td></tr><tr><td>...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td>...</td></tr></tbody></table></div></div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Page 14 -->
         <section class="section-page light-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 14</div>
             <div class="container mx-auto px-4 text-center flex flex-col justify-center h-full">
@@ -667,78 +685,32 @@
             </div>
         </section>
 
-        <section class="section-page light-bg">
+        <!-- Page 15 -->
+        <section class="section-page light-bg" id="page-15-content">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 15</div>
             <div class="container mx-auto px-6 text-center">
                 <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">통합된 광고 데이터</h2>
-                    <p class="page-subtitle mt-4">데이터 구조화-표준화-정규화-라벨링을 통해 통합된 광고 데이터 항목</p>
+                    <p class="page-subtitle mt-4">데이터 구조화-표준화-정규화-라벨링을 통해 완성된 방대한 데이터 자산</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-7xl">
                     <div class="category-card">
                         <h2 class="category-title">디멘션 (Dimensions)</h2>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                            <div class="item-chip">계정 ID</div>
-                            <div class="item-chip">계정 이름</div>
-                            <div class="item-chip">캠페인 ID</div>
-                            <div class="item-chip">캠페인 이름</div>
-                            <div class="item-chip">광고그룹 ID</div>
-                            <div class="item-chip">광고그룹 이름</div>
-                            <div class="item-chip">매체</div>
-                            <div class="item-chip">광고상품</div>
-                            <div class="item-chip">광고상품(세부)</div>
-                            <div class="item-chip">광고상품 목표</div>
-                            <div class="item-chip">광고상품 전략</div>
-                            <div class="item-chip">광고목표</div>
-                            <div class="item-chip">소재유형</div>
-                            <div class="item-chip">소재 ID</div>
-                            <div class="item-chip">소재 이름</div>
-                            <div class="item-chip">소재파일</div>
-                            <div class="item-chip">강조방식</div>
-                            <div class="item-chip">속성/키워드</div>
-                            <div class="item-chip">랜딩URL</div>
-                            <div class="item-chip">광고주</div>
-                            <div class="item-chip">브랜드</div>
-                            <div class="item-chip">제품/서비스</div>
-                            <div class="item-chip">업종(대)</div>
-                            <div class="item-chip">업종(중)</div>
-                            <div class="item-chip">업종(소)</div>
-                            <div class="item-chip">광고 유형</div>
-                            <div class="item-chip">연령</div>
-                            <div class="item-chip">연령ID</div>
-                            <div class="item-chip">성별</div>
-                            <div class="item-chip">성별ID</div>
-                            <div class="item-chip">기기</div>
-                            <div class="item-chip">기기ID</div>
-                            <div class="item-chip">국가</div>
-                            <div class="item-chip">국가ID</div>
-                            <div class="item-chip">통화</div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                            <div class="item-chip">계정 ID</div><div class="item-chip">계정 이름</div><div class="item-chip">캠페인 ID</div><div class="item-chip">캠페인 이름</div><div class="item-chip">광고그룹 ID</div><div class="item-chip">광고그룹 이름</div><div class="item-chip">매체</div><div class="item-chip">광고상품</div><div class="item-chip">광고상품(세부)</div><div class="item-chip">광고상품 목표</div><div class="item-chip">광고상품 전략</div><div class="item-chip">광고목표</div><div class="item-chip">소재유형</div><div class="item-chip">소재 ID</div><div class="item-chip">소재 이름</div><div class="item-chip">소재파일</div><div class="item-chip">소재 텍스트</div><div class="item-chip">강조방식</div><div class="item-chip">속성/키워드</div><div class="item-chip">랜딩URL</div><div class="item-chip">광고주</div><div class="item-chip">브랜드</div><div class="item-chip">제품/서비스</div><div class="item-chip">업종(대)</div><div class="item-chip">업종(중)</div><div class="item-chip">업종(소)</div><div class="item-chip">광고 유형</div><div class="item-chip">연령</div><div class="item-chip">연령ID</div><div class="item-chip">성별</div><div class="item-chip">성별ID</div><div class="item-chip">기기</div><div class="item-chip">기기ID</div><div class="item-chip">국가</div><div class="item-chip">국가ID</div><div class="item-chip">지역</div><div class="item-chip">지역ID</div><div class="item-chip">통화</div><div class="item-chip">날짜</div><div class="item-chip">...etc</div>
                         </div>
                     </div>
                     <div class="category-card">
                         <h2 class="category-title">메트릭 (Metrics)</h2>
-                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                            <div class="item-chip">비용</div>
-                            <div class="item-chip">노출수</div>
-                            <div class="item-chip">조회수</div>
-                            <div class="item-chip">클릭수</div>
-                            <div class="item-chip">앱설치</div>
-                            <div class="item-chip">구매</div>
-                            <div class="item-chip">구매금액</div>
-                            <div class="item-chip">CPM</div>
-                            <div class="item-chip">CPV</div>
-                            <div class="item-chip">VTR</div>
-                            <div class="item-chip">CPC</div>
-                            <div class="item-chip">CTR</div>
-                            <div class="item-chip">CPI</div>
-                            <div class="item-chip">CVR</div>
-                            <div class="item-chip">ROAS</div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                           <div class="item-chip">비용</div><div class="item-chip">노출수</div><div class="item-chip">도달수</div><div class="item-chip">빈도수</div><div class="item-chip">조회수</div><div class="item-chip">3초 조회수</div><div class="item-chip">클릭수</div><div class="item-chip">링크 클릭수</div><div class="item-chip">페이지뷰</div><div class="item-chip">앱설치</div><div class="item-chip">가입</div><div class="item-chip">장바구니</div><div class="item-chip">구매</div><div class="item-chip">구매금액</div><div class="item-chip">전환</div><div class="item-chip">전환가치</div><div class="item-chip">CPM</div><div class="item-chip">CPV</div><div class="item-chip">VTR</div><div class="item-chip">CPC</div><div class="item-chip">CTR</div><div class="item-chip">CPI</div><div class="item-chip">CVR</div><div class="item-chip">CPA</div><div class="item-chip">ROAS</div><div class="item-chip">...etc</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Page 16 -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 16</div>
             <div class="text-center">
@@ -747,6 +719,7 @@
             </div>
         </section>
 
+        <!-- Page 17 -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 17</div>
             <div class="page-header-container">
@@ -791,6 +764,7 @@
             </p>
         </section>
 
+        <!-- Page 18 -->
         <section class="section-page light-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 18</div>
             <div class="container mx-auto px-4 max-w-6xl text-center flex flex-col justify-center h-full">
@@ -853,6 +827,7 @@
             </div>
         </section>
 
+        <!-- Page 19 -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 19</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">업무 혁신, 어디서부터 시작 해야 할까요?</h2>
@@ -864,12 +839,12 @@
                 현업에서 마주하는 Pain Point는 무엇인가요?
             </div>
             <div class="pain-point-table-container">
-                <div class="pain-point-box-container" id="pain-point-box-18">
+                <div class="pain-point-box-container" id="pain-point-box-19">
                     <div class="pain-point-left-area">
                         <img src="https://mobiinsidecontent.s3.ap-northeast-2.amazonaws.com/kr/wp-content/uploads/2021/06/23105824/GettyImages-1222573809-1024x683.jpg" alt="업무 문제 파악을 위한 인터뷰 이미지" class="pain-point-image" onerror="this.onerror=null;this.src='https://placehold.co/350x250/cccccc/333333?text=Interview+Image';">
                     </div>
                     <div class="flex-grow">
-                        <table class="w-full pain-point-table-unified" id="pain-point-table-18">
+                        <table class="w-full pain-point-table-unified" id="pain-point-table-19">
                             <thead>
                                 <tr>
                                     <th>PainPoint</th>
@@ -905,6 +880,7 @@
             </div>
         </section>
 
+        <!-- Page 20 -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 20</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">레퍼런스 공유가 필요한 목적은 무엇일까요?</h2>
@@ -951,6 +927,7 @@
             </div>
         </section>
 
+        <!-- Page 21 -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 21</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">ATLAS가 그리는 자동화의 미래</h2>
@@ -962,12 +939,12 @@
                 이제부터, 그 가능성을 직접 확인해 보겠습니다.
             </p>
             <div class="screenshot-grid mx-auto">
-                <a href="미디어믹스 자동화 시스템 인포그래픽_0620_v6.html" target="_blank" class="screenshot-item">
+                <a href="미디어믹스 자동화 시스템 인포그래픽.html" target="_blank" class="screenshot-item">
                     <img src="https://d3oth3oks7q81w.cloudfront.net/images/2020/06/17/1592376737_QXJHfnDX9inTAJ4zWScT7b41qVhvIJkNOsqQIWsq.jpeg" alt="미디어 믹스 자동화 시스템 스크린샷" onerror="this.onerror=null;this.src='https://placehold.co/450x280/94a3b8/ffffff?text=Media+Mix+Automation';">
                     <div class="screenshot-overlay"></div>
                     <p>미디어 믹스 자동화 시스템</p>
                 </a>
-                <a href="성과 기반 크리에이티브 플래닝 시스템 인포그래픽_v5_F.html" target="_blank" class="screenshot-item">
+                <a href="성과 기반 크리에이티브 플래닝 시스템 인포그래픽.html" target="_blank" class="screenshot-item">
                     <img src="https://thenextcommerce.com/wp-content/uploads/2023/04/%EC%84%9C%EB%B9%84%EC%8A%A4%ED%99%8D%EB%B3%B4-%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%8B%9C%EC%95%88-1.png" alt="크리에이티브 플래닝 시스템 스크린샷" onerror="this.onerror=null;this.src='https://placehold.co/450x280/94a3b8/ffffff?text=Creative+Planning+System';">
                     <div class="screenshot-overlay"></div>
                     <p>크리에이티브 플래닝 시스템</p>
@@ -975,14 +952,15 @@
             </div>
         </section>
 
-        <section id="page-21" class="section-page light-bg text-center" data-theme="light">
+        <!-- Page 22 -->
+        <section id="page-22" class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 22</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Project ATLAS, 앞으로 더 깊고 넓게 뿌리내립니다.</h2>
             <p class="page-subtitle mt-4 whitespace-nowrap">
                 지속적인 제품 고도화와 제품 확장을 통해 데이터 가치 극대화를 실현해 나가겠습니다.
             </p>
             <div class="marquee-wrapper">
-                <div id="marquee-content-21" class="marquee-content">
+                <div id="marquee-content-22" class="marquee-content">
                     <div class="page21-grid-item">
                         <img src="https://d3oth3oks7q81w.cloudfront.net/images/2020/06/17/1592376737_QXJHfnDX9inTAJ4zWScT7b41qVhvIJkNOsqQIWsq.jpeg" alt="미디어 믹스 자동화 시스템 이미지" onerror="this.onerror=null;this.src='https://placehold.co/420x260/94a3b8/ffffff?text=Media+Mix+Automation';">
                         <div class="page21-grid-overlay"></div>
@@ -1017,6 +995,7 @@
             </div>
         </section>
 
+        <!-- Page 23 -->
         <section class="section-page end-bg-final text-center" data-theme="dark">
             <div class="particle-canvas"></div>
             <div class="relative z-10 flex flex-col items-center justify-center h-full">
@@ -1154,11 +1133,26 @@
                 });
             }
 
-            // Page 18: Match Image and Table Height
-            const painPointBox = document.getElementById('pain-point-box-18');
-            if (painPointBox) {
-                const table = document.getElementById('pain-point-table-18');
-                const imageContainer = painPointBox.querySelector('.pain-point-left-area');
+            // Page 15: Staggered Animation
+            const page15 = document.getElementById('page-15-content');
+            if(page15) {
+                const chips = page15.querySelectorAll('.item-chip');
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        chips.forEach((chip, index) => {
+                            chip.style.animationDelay = `${index * 0.03}s`;
+                        });
+                        observer.unobserve(page15);
+                    }
+                }, { threshold: 0.1 });
+                observer.observe(page15);
+            }
+
+            // Page 19: Match Image and Table Height
+            const painPointBox19 = document.getElementById('pain-point-box-19');
+            if (painPointBox19) {
+                const table = document.getElementById('pain-point-table-19');
+                const imageContainer = painPointBox19.querySelector('.pain-point-left-area');
                 if(table && imageContainer) {
                     const resizeObserver = new ResizeObserver(() => {
                         imageContainer.style.height = `${table.offsetHeight}px`;
@@ -1167,23 +1161,23 @@
                 }
             }
 
-            // Page 21: Marquee Animation
-            const page21 = document.getElementById('page-21');
-            const marqueeContent21 = document.getElementById('marquee-content-21');
-            if (page21 && marqueeContent21) {
-                const originalContent = marqueeContent21.innerHTML;
-                marqueeContent21.innerHTML += originalContent;
+            // Page 22: Marquee Animation
+            const page22 = document.getElementById('page-22');
+            const marqueeContent22 = document.getElementById('marquee-content-22');
+            if (page22 && marqueeContent22) {
+                const originalContent = marqueeContent22.innerHTML;
+                marqueeContent22.innerHTML += originalContent;
 
                 const marqueeObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            marqueeContent21.classList.add('is-rolling');
+                            marqueeContent22.classList.add('is-rolling');
                         } else {
-                            marqueeContent21.classList.remove('is-rolling');
+                            marqueeContent22.classList.remove('is-rolling');
                         }
                     });
                 }, { threshold: 0.1 });
-                marqueeObserver.observe(page21);
+                marqueeObserver.observe(page22);
             }
         });
     </script>
