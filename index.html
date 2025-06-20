@@ -56,20 +56,23 @@
             from { background-position: 0 0; }
             to { background-position: -5000px 2500px; }
         }
-        @keyframes title-glow {
-            0% { text-shadow: 0 0 15px rgba(129, 140, 248, 0.6), 0 0 30px rgba(99, 102, 241, 0.4), 0 0 50px rgba(167, 139, 250, 0.3); }
-            50% { text-shadow: 0 0 30px rgba(129, 140, 248, 0.9), 0 0 50px rgba(99, 102, 241, 0.6), 0 0 80px rgba(167, 139, 250, 0.4); }
-            100% { text-shadow: 0 0 15px rgba(129, 140, 248, 0.6), 0 0 30px rgba(99, 102, 241, 0.4), 0 0 50px rgba(167, 139, 250, 0.3); }
+        .project-title {
+            color: #d1d5db; /* 상대적으로 덜 강조 */
         }
         .atlas-title-final {
             background: linear-gradient(120deg, #a5b4fc, #d8b4fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: title-glow 4s infinite ease-in-out;
-            padding-bottom: 0.6rem; /* j, p 등 잘림 방지 */
+            padding-bottom: 0.6rem;
+        }
+        @keyframes title-glow {
+            0% { text-shadow: 0 0 15px rgba(129, 140, 248, 0.6), 0 0 30px rgba(99, 102, 241, 0.4), 0 0 50px rgba(167, 139, 250, 0.3); }
+            50% { text-shadow: 0 0 30px rgba(129, 140, 248, 0.9), 0 0 50px rgba(99, 102, 241, 0.6), 0 0 80px rgba(167, 139, 250, 0.4); }
+            100% { text-shadow: 0 0 15px rgba(129, 140, 248, 0.6), 0 0 30px rgba(99, 102, 241, 0.4), 0 0 50px rgba(167, 139, 250, 0.3); }
         }
         
-        .part-intro-bg-updated { /* 간지 배경 */
+        .part-intro-bg-updated {
             background-color: #0b1021;
             background-image: 
                 radial-gradient(circle at 1% 1%, hsla(220, 90%, 60%, 0.35), #0b1021 35%),
@@ -80,11 +83,16 @@
         .light-bg { background-color: #f9fafb; color: #1f2937; }
         .white-bg { background-color: #ffffff; color: #1f2937; }
 
-        /* 헤더 자동 숨김 스타일 */
         header { transition: transform 0.4s ease, opacity 0.4s ease; }
         .header-hidden { transform: translateY(-100%); opacity: 0; pointer-events: none; }
 
-        /* 데이터 사일로 스타일 */
+        /* 4페이지 & 6페이지 사일로 효과 */
+        @keyframes float-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .silo { animation: float-subtle 4s ease-in-out infinite; }
+        .silo:nth-child(2) { animation-delay: -1s; }
+        .silo:nth-child(3) { animation-delay: -2s; }
+        .silo:nth-child(4) { animation-delay: -3s; }
+        #integration-box .silo { animation: float-subtle 6s ease-in-out infinite; }
         .silo { position: relative; display: flex; justify-content: center; align-items: center; color: white; font-size: 10px; font-weight: 500; text-align: center; border-radius: 4px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
         .silo::before, .silo::after { content: ''; position: absolute; left: 0; width: 100%; height: 24px; border-radius: 50%; }
         .silo::before { top: 0; transform: translateY(-50%); border: 1px solid rgba(255,255,255,0.2); }
@@ -113,13 +121,15 @@
         .silo-cyan { background: linear-gradient(180deg, #22d3ee, #0891b2); }
         .silo-cyan::before { background: linear-gradient(to bottom, #67e8f9, #22d3ee); }
         .silo-cyan::after { background: linear-gradient(to top, #06b6d4, #0891b2); }
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-        #integration-box .silo { animation: float 6s ease-in-out infinite; }
+
+        /* 7페이지 ToBe 카드 강조 */
+        @keyframes pulse-border { 0%, 100% { border-color: #60a5fa; box-shadow: 0 0 0 0 rgba(96, 165, 250, 0.7); } 50% { border-color: #3b82f6; box-shadow: 0 0 15px 5px rgba(96, 165, 250, 0); } }
+        .to-be-card-emphasis { animation: pulse-border 2.5s infinite; }
         
-        /* 9페이지 배경 스타일 */
+        /* 9페이지 배경 및 컨텐츠 */
         .project-intro-bg { background-color: #0c0a18; color: white; }
         #starfield-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-        .content-wrapper { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .content-wrapper { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; max-width: 1100px; }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         .animate-reveal { opacity: 0; transform: translateY(20px); animation: fadeIn 1s forwards; }
         .logo-container { animation: fadeIn 1s forwards, subtle-glow 5s infinite 1s ease-in-out; }
@@ -130,10 +140,12 @@
         .atlas-highlight { color: #a5b4fc; }
 
         /* 12페이지: 데이터 표준화 카드 스타일 */
-        .platform-card { background-color: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); border: 1px solid #e5e7eb; flex: 1; min-width: 180px; }
-        .platform-card-item { background-color: #f3f4f6; border-radius: 8px; padding: 10px 16px; text-align: center; font-weight: 500; color: #374151; }
+        .platform-card { position: relative; background-color: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); border: 1px solid #e5e7eb; flex: 1; min-width: 180px; }
+        .platform-card-item { background-color: #f3f4f6; border-radius: 8px; padding: 10px 16px; text-align: center; font-weight: 500; color: #374151; transition: background-color 0.2s ease-in-out; }
         .standard-card { background-color: #eff6ff; border: 2px solid #3b82f6; }
         .standard-card-item { background-color: #dbeafe; color: #1e40af; }
+        .platform-card-item.highlight-row { background-color: #dbeafe; }
+        .standard-card-item.highlight-row { background-color: #93c5fd; }
         
         /* 13페이지: 데이터 정규화 테이블 스타일 */
         .normalization-table { background-color: white; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1); flex: 1; min-width: 300px; max-width: 350px; display: flex; flex-direction: column; }
@@ -156,16 +168,14 @@
     </header>
 
     <main>
-        <!-- Page 1: Hero Section (Final Design) -->
         <section class="section-page hero-bg-final text-center" data-theme="dark">
             <div id="hero-particles"></div>
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 1</div>
-            <h2 class="text-6xl md:text-8xl font-black leading-tight my-4 atlas-title-final">Project ATLAS</h2>
+            <h2 class="text-6xl md:text-8xl font-black leading-tight my-4"><span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span></h2>
             <p class="text-2xl text-indigo-300 font-semibold tracking-wide mt-24">Ontology Design Lab</p>
             <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mt-6">2025.06.24</p>
         </section>
         
-        <!-- Page 2: Part 1 Intro -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 2</div>
             <div class="text-center">
@@ -174,7 +184,6 @@
             </div>
         </section>
 
-        <!-- Page 3: Market Context -->
         <section class="section-page light-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-500">Page 3</div>
             <div class="container mx-auto px-4 max-w-6xl">
@@ -203,11 +212,14 @@
                             <table class="min-w-full text-sm text-gray-700">
                                 <thead class="bg-gray-100 border-b-2 border-gray-200"><tr><th class="py-3 px-4 text-left font-semibold">회사명</th><th class="py-3 px-4 text-left font-semibold">구분</th><th class="py-3 px-4 text-left font-semibold">시기</th></tr></thead>
                                 <tbody class="divide-y divide-gray-200">
-                                    <tr class="hover:bg-gray-50"><td class="py-3 px-4">엠포스</td><td class="py-3 px-4">폐업</td><td class="py-3 px-4">2025.6</td></tr>
-                                    <tr class="bg-gray-50 hover:bg-gray-100"><td class="py-3 px-4">디노마드</td><td class="py-3 px-4">기업회생</td><td class="py-3 px-4">2025.2</td></tr>
-                                    <tr class="hover:bg-gray-50"><td class="py-3 px-4">디블렌트</td><td class="py-3 px-4">기업회생</td><td class="py-3 px-4">2024.12</td></tr>
-                                    <tr class="bg-gray-50 hover:bg-gray-100"><td class="py-3 px-4">이루다크리에이티브</td><td class="py-3 px-4">파산</td><td class="py-3 px-4">2024.11</td></tr>
-                                    <tr class="hover:bg-gray-50"><td class="py-3 px-4">뉴데이즈</td><td class="py-3 px-4">폐업</td><td class="py-3 px-4">2024.9</td></tr>
+                                    <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium">엠포스</td><td class="py-3 px-4">폐업</td><td class="py-3 px-4">2025.6</td></tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100"><td class="py-3 px-4 font-medium">디노마드</td><td class="py-3 px-4">기업회생</td><td class="py-3 px-4">2025.2</td></tr>
+                                    <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium">디블렌트</td><td class="py-3 px-4">기업회생</td><td class="py-3 px-4">2024.12</td></tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100"><td class="py-3 px-4 font-medium">이루다크리에이티브</td><td class="py-3 px-4">파산</td><td class="py-3 px-4">2024.11</td></tr>
+                                    <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium">뉴데이즈</td><td class="py-3 px-4">폐업</td><td class="py-3 px-4">2024.9</td></tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100"><td class="py-3 px-4 font-medium">인터스텔라</td><td class="py-3 px-4">폐업</td><td class="py-3 px-4">2024.8</td></tr>
+                                    <tr class="hover:bg-gray-50"><td class="py-3 px-4 font-medium">농심기획</td><td class="py-3 px-4">청산</td><td class="py-3 px-4">2024.6</td></tr>
+                                    <tr class="bg-gray-50 hover:bg-gray-100"><td class="py-3 px-4 font-medium">디디비코리아</td><td class="py-3 px-4">영업종료</td><td class="py-3 px-4">2024.6</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -216,7 +228,6 @@
             </div>
         </section>
 
-        <!-- Page 4: Problem Intro -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 4</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">잠자는 데이터 자산, 이대로 방치해도 괜찮을까요?</h2>
@@ -233,7 +244,6 @@
             <p class="mt-16 text-2xl text-blue-600 font-bold max-w-4xl leading-snug">지금 이 순간에도 생성되고 있는 데이터는 분산되고 단절된 채<br>사일로에 갇혀 효율적으로 활용되지 못하고 있습니다.</p>
         </section>
 
-        <!-- Page 5: Problem Details -->
         <section class="section-page white-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 5</div>
             <div class="w-full max-w-6xl">
@@ -261,7 +271,6 @@
             </div>
         </section>
         
-        <!-- Page 6: Need for Solution (Restored) -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 6</div>
             <div class="w-full max-w-6xl">
@@ -271,38 +280,14 @@
                 <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                     이제는 데이터를 '모으고, 바로 쓰기 위해' 통합해야 할 때 입니다.
                 </p>
-                <div class="mt-12 flex flex-col md:flex-row justify-center items-center gap-8">
-                    <div class="text-center">
-                        <h3 class="text-xl font-bold mb-4 text-gray-500">Data Silo</h3>
-                        <div class="flex flex-col gap-6 items-center mt-6">
-                            <div class="silo silo-blue" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div>
-                            <div class="silo silo-indigo" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div>
-                            <div class="silo silo-teal" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div>
-                            <div class="text-3xl font-bold text-gray-400 leading-tight -mt-4">.<br>.<br>.</div>
-                        </div>
-                    </div>
-                    <div class="w-24 md:pt-32 transform md:rotate-0 rotate-90">
-                       <svg viewBox="0 0 105 50" class="w-full h-auto" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="arrowGradientPage6" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" /><stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" /></linearGradient></defs><path d="M 0 25 L 90 25 M 85 15 L 100 25 L 85 35" stroke="url(#arrowGradientPage6)" stroke-width="8" fill="none" stroke-linecap="round"/></svg>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-bold mb-4 text-gray-500">Data Integration</h3>
-                        <div id="integration-box" class="relative bg-white/10 backdrop-blur-sm border-2 border-gray-300 rounded-2xl p-4" style="width: 450px; height: 450px;">
-                             <svg id="connection-lines" class="absolute inset-0 w-full h-full" style="opacity: 0.6;"></svg>
-                            <div id="isilo1" class="absolute silo silo-blue" style="width: 100px; height: 100px; top: 38%; left: 35%; animation-delay: -1s;"><span>Campaign<br>Data</span></div>
-                            <div id="isilo2" class="absolute silo silo-purple" style="width: 75px; height: 75px; top: 12%; left: 60%; animation-delay: -2.5s;"><span>Campaign<br>Data</span></div>
-                            <div id="isilo3" class="absolute silo silo-teal" style="width: 80px; height: 80px; top: 15%; left: 8%; animation-delay: -4s;"><span>Campaign<br>Data</span></div>
-                            <div id="isilo4" class="absolute silo silo-red" style="width: 60px; height: 60px; top: 68%; left: 8%; animation-delay: -1.8s;"><span>Data</span></div>
-                            <div id="isilo5" class="absolute silo silo-amber" style="width: 85px; height: 85px; top: 70%; left: 65%; animation-delay: -5.2s;"><span>Campaign<br>Data</span></div>
-                            <div id="isilo6" class="absolute silo silo-pink" style="width: 50px; height: 50px; top: 5%; right: 10%; animation-delay: 0s;"><span>Data</span></div>
-                            <div id="isilo7" class="absolute silo silo-cyan" style="width: 55px; height: 55px; bottom: 5%; left: 45%; animation-delay: -3.3s;"><span>Data</span></div>
-                            <div id="isilo8" class="absolute silo silo-indigo" style="width: 45px; height: 45px; bottom: 12%; right: 5%; animation-delay: -0.5s;"><span>Data</span></div>
-                        </div>
-                    </div>
+                <div class="mt-12 flex flex-col md:flex-row justify-center items-start gap-8">
+                    <div class="text-center"><h3 class="text-xl font-bold mb-4 text-gray-500 text-center">Data Silo</h3><div class="flex flex-col gap-6 items-center mt-6"><div class="silo silo-blue" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div><div class="silo silo-indigo" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div><div class="silo silo-teal" style="width: 70px; height: 70px;"><span>Campaign<br>Data</span></div><div class="text-3xl font-bold text-gray-400 leading-tight -mt-4">.<br>.<br>.</div></div></div>
+                    <div class="w-24 md:pt-36 transform md:rotate-0 rotate-90"><svg viewBox="0 0 105 50" class="w-full h-auto" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="arrowGradientPage6" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" /><stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" /></linearGradient></defs><path d="M 0 25 L 90 25 M 85 15 L 100 25 L 85 35" stroke="url(#arrowGradientPage6)" stroke-width="8" fill="none" stroke-linecap="round"/></svg></div>
+                    <div class="text-center"><h3 class="text-xl font-bold mb-4 text-gray-500 text-center">Data Integration</h3><div id="integration-box" class="relative bg-white/10 backdrop-blur-sm border-2 border-gray-300 rounded-2xl p-4" style="width: 450px; height: 450px;"><svg id="connection-lines" class="absolute inset-0 w-full h-full" style="opacity: 0.6;"></svg><div id="isilo1" class="absolute silo silo-blue" style="width: 100px; height: 100px; top: 38%; left: 35%; animation-delay: -1s;"><span>Campaign<br>Data</span></div><div id="isilo2" class="absolute silo silo-purple" style="width: 75px; height: 75px; top: 12%; left: 60%; animation-delay: -2.5s;"><span>Campaign<br>Data</span></div><div id="isilo3" class="absolute silo silo-teal" style="width: 80px; height: 80px; top: 15%; left: 8%; animation-delay: -4s;"><span>Campaign<br>Data</span></div><div id="isilo4" class="absolute silo silo-red" style="width: 60px; height: 60px; top: 68%; left: 8%; animation-delay: -1.8s;"><span>Data</span></div><div id="isilo5" class="absolute silo silo-amber" style="width: 85px; height: 85px; top: 70%; left: 65%; animation-delay: -5.2s;"><span>Campaign<br>Data</span></div><div id="isilo6" class="absolute silo silo-pink" style="width: 50px; height: 50px; top: 5%; right: 10%; animation-delay: 0s;"><span>Data</span></div><div id="isilo7" class="absolute silo silo-cyan" style="width: 55px; height: 55px; bottom: 5%; left: 45%; animation-delay: -3.3s;"><span>Data</span></div><div id="isilo8" class="absolute silo silo-indigo" style="width: 45px; height: 45px; bottom: 12%; right: 5%; animation-delay: -0.5s;"><span>Data</span></div></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Page 7: Why now? (Restored) -->
         <section class="section-page white-bg text-gray-800" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 7</div>
             <div class="w-full max-w-6xl text-center">
@@ -313,14 +298,13 @@
                 </div>
                 <div class="mt-12 w-full max-w-5xl mx-auto space-y-6">
                     <div class="grid grid-cols-12 items-center gap-4 text-center"><div class="col-start-2 col-span-4 text-2xl font-bold text-gray-500">As Is</div><div class="col-start-8 col-span-4 text-2xl font-bold text-blue-600">To Be</div></div>
-                    <div class="grid grid-cols-12 items-stretch gap-4"><div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">목적</div><div class="col-span-4 bg-gray-100 p-4 rounded-lg text-center flex items-center justify-center text-lg">데이터 통합</div><div class="col-span-2 text-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div><div class="col-span-4 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-center flex items-center justify-center"><strong class="text-blue-600 text-xl font-bold">데이터 가치 극대화</strong></div></div>
-                    <div class="grid grid-cols-12 items-stretch gap-4"><div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">과정</div><div class="col-span-4 bg-gray-100 p-4 rounded-lg text-left flex items-center text-base"><ol class="list-decimal list-inside space-y-1"><li>매체별 데이터 제공 항목 확인</li><li>표준화 가능한 항목으로 데이터 통합</li></ol></div><div class="col-span-2 text-center self-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div><div class="col-span-4 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-left flex items-center text-lg"><ol class="list-decimal list-inside space-y-1"><li class="text-blue-600 font-bold">실사용자 니즈 확인</li><li>매체별 데이터 제공 항목 확인</li><li>표준화 필요한 항목으로 데이터 통합</li></ol></div></div>
-                    <div class="grid grid-cols-12 items-stretch gap-4"><div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">결과</div><div class="col-span-4 bg-gray-100 p-4 rounded-lg text-left flex items-center text-base">파편화된 데이터의 나열<br>히스토리 확인 가능한 데이터 저장/조회 도구</div><div class="col-span-2 text-center self-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div><div class="col-span-4 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-left flex items-center text-lg"><strong class="text-blue-600">유기적으로 연결된 정보와 지식<br>데이터에 기반한 의사결정 도구</strong></div></div>
+                    <div class="grid grid-cols-12 items-stretch gap-4"><div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">목적</div><div class="col-span-4 bg-gray-100 p-4 rounded-lg text-center flex items-center justify-center text-lg">데이터 통합</div><div class="col-span-2 text-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div><div class="to-be-card-emphasis col-span-4 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-center flex items-center justify-center"><strong class="text-blue-600 text-xl font-bold">데이터 가치 극대화</strong></div></div>
+                    <div class="grid grid-cols-12 items-stretch gap-4"><div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">과정</div><div class="col-span-4 bg-gray-100 p-4 rounded-lg text-left flex items-center text-base"><ol class="list-decimal list-inside space-y-1"><li>매체별 데이터 제공 항목 확인</li><li>표준화 가능한 항목으로 데이터 통합</li></ol></div><div class="col-span-2 text-center self-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div><div class="to-be-card-emphasis col-span-4 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-left flex items-center text-lg"><ol class="list-decimal list-inside space-y-1"><li class="text-blue-600 font-bold">실사용자 니즈 확인</li><li>매체별 데이터 제공 항목 확인</li><li>표준화 필요한 항목으로 데이터 통합</li></ol></div></div>
+                    <div class="grid grid-cols-12 items-stretch gap-4"><div class="col-span-1 text-xl font-bold text-gray-500 flex items-center justify-end pr-4">결과</div><div class="col-span-4 bg-gray-100 p-4 rounded-lg text-left flex items-center text-base">파편화된 데이터의 나열<br>히스토리 확인 가능한 데이터 저장/조회 도구</div><div class="col-span-2 text-center self-center flex items-center justify-center"><svg class="w-8 h-8 text-gray-400 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg></div><div class="to-be-card-emphasis col-span-4 bg-blue-50 border-2 border-blue-500 p-4 rounded-lg text-left flex items-center text-lg"><strong class="text-blue-600">유기적으로 연결된 정보와 지식<br>데이터에 기반한 의사결정 도구</strong></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Page 8: Part 2 Intro -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 8</div>
             <div class="text-center">
@@ -329,7 +313,6 @@
             </div>
         </section>
 
-        <!-- Page 9: Project Intro -->
         <section class="section-page project-intro-bg" data-theme="dark">
             <canvas id="starfield-canvas"></canvas>
             <div class="content-wrapper">
@@ -351,7 +334,6 @@
             </div>
         </section>
 
-        <!-- Page 10: Process Overview -->
         <section class="section-page light-bg text-center" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 10</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">Project ATLAS, 이렇게 데이터 통합을 해결합니다.</h2>
@@ -362,40 +344,39 @@
              <div class="mt-12 w-full max-w-screen-xl flex flex-wrap justify-center items-start gap-4">
                 <div class="flex flex-col items-center flex-1 min-w-[220px] max-w-[250px]"><div class="bg-blue-600 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-52 w-full shadow-lg"><h3 class="font-bold text-xl">STEP 1.</h3><p class="font-bold text-3xl">데이터 구조화</p><p class="text-sm mt-3 font-semibold">광고 데이터를 체계적으로<br>분류하고 구조화</p></div></div>
                 <div class="flex items-center justify-center mt-20"><svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div>
-                <div class="flex flex-col items-center flex-1 min-w-[220px] max-w-[250px]"><div class="bg-blue-500 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-52 w-full shadow-lg"><h3 class="font-bold text-xl">STEP 2.</h3><p class="font-bold text-3xl">데이터 표준화</p><p class="text-sm mt-3 font-semibold">매체별 상이한 데이터를<br>동일한 기준으로 변환</p></div></div>
+                <div class="flex flex-col items-center flex-1 min-w-[220px] max-w-[250px]"><div class="bg-indigo-600 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-52 w-full shadow-lg"><h3 class="font-bold text-xl">STEP 2.</h3><p class="font-bold text-3xl">데이터 표준화</p><p class="text-sm mt-3 font-semibold">매체별 상이한 데이터를<br>동일한 기준으로 변환</p></div></div>
                 <div class="flex items-center justify-center mt-20"><svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div>
-                <div class="flex flex-col items-center flex-1 min-w-[220px] max-w-[250px]"><div class="bg-blue-400 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-52 w-full shadow-lg"><h3 class="font-bold text-xl">STEP 3.</h3><p class="font-bold text-3xl">데이터 정규화</p><p class="text-sm mt-3 font-semibold">데이터 품질을 향상시키고<br>일관성을 확보</p></div></div>
+                <div class="flex flex-col items-center flex-1 min-w-[220px] max-w-[250px]"><div class="bg-purple-600 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-52 w-full shadow-lg"><h3 class="font-bold text-xl">STEP 3.</h3><p class="font-bold text-3xl">데이터 정규화</p><p class="text-sm mt-3 font-semibold">데이터 품질을 향상시키고<br>일관성을 확보</p></div></div>
                 <div class="flex items-center justify-center mt-20"><svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></div>
-                <div class="flex flex-col items-center flex-1 min-w-[220px] max-w-[250px]"><div class="bg-blue-300 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-52 w-full shadow-lg"><h3 class="font-bold text-xl">STEP 4.</h3><p class="font-bold text-3xl">데이터 라벨링</p><p class="text-sm mt-3 font-semibold">데이터 활용성을<br>크게 향상시킴</p></div></div>
+                <div class="flex flex-col items-center flex-1 min-w-[220px] max-w-[250px]"><div class="bg-teal-600 text-white p-6 rounded-xl text-center flex flex-col justify-center items-center h-52 w-full shadow-lg"><h3 class="font-bold text-xl">STEP 4.</h3><p class="font-bold text-3xl">데이터 라벨링</p><p class="text-sm mt-3 font-semibold">데이터 활용성을<br>크게 향상시킴</p></div></div>
             </div>
         </section>
         
-        <!-- Page 11: Ontology -->
         <section class="section-page white-bg" data-theme="light">
-            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 11</div>
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">Step1. 온톨로지 기반 데이터 구조화</h2>
-                <img loading="lazy" src="images/ontology.png" alt="온톨로지 구조도" class="rounded-lg shadow-xl mx-auto w-full max-w-7xl h-auto">
-            </div>
-        </section>
+    <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 11</div>
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-12">Step1. 온톨로지 기반 데이터 구조화</h2>
 
-        <!-- Page 12: Standardization -->
+        <img src="images/ontology.png" alt="온톨로지 구조도" class="rounded-lg shadow-xl mx-auto w-full max-w-7xl h-auto object-contain" style="max-height: 70vh;">
+
+    </div>
+</section>
+
         <section class="section-page light-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 12</div>
             <div class="container mx-auto px-6 text-center w-full">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Step2. 데이터 표준화</h2>
                 <p class="mt-8 text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">각 매체의 제공 항목을 세부적으로 검토하고, <br>리포트에 없는 항목도 API를 활용해 포함시켜 표준화를 완성했습니다.</p>
-                <div class="mt-12 flex flex-col md:flex-row flex-nowrap justify-center items-stretch gap-6 w-full max-w-6xl mx-auto">
-                    <div class="platform-card flex flex-col items-center p-6"><h3 class="text-2xl font-bold text-gray-900 mb-6">Moment</h3><div class="w-full space-y-3"><div class="platform-card-item">계정ID</div><div class="platform-card-item">비용</div><div class="platform-card-item">재생수</div><div class="platform-card-item">구매 금액</div></div></div>
-                    <div class="platform-card flex flex-col items-center p-6"><h3 class="text-2xl font-bold text-gray-900 mb-6">Meta</h3><div class="w-full space-y-3"><div class="platform-card-item">계정ID</div><div class="platform-card-item">지출 금액</div><div class="platform-card-item">3초 이상 재생</div><div class="platform-card-item">구매 전환값</div></div></div>
-                    <div class="platform-card flex flex-col items-center p-6"><h3 class="text-2xl font-bold text-gray-900 mb-6">Google</h3><div class="w-full space-y-3"><div class="platform-card-item">고객ID</div><div class="platform-card-item">지출 금액</div><div class="platform-card-item">조회수</div><div class="platform-card-item">전환 가치</div></div></div>
+                <div id="page-12-cards" class="mt-12 flex flex-col md:flex-row flex-nowrap justify-center items-stretch gap-6 w-full max-w-6xl mx-auto relative">
+                    <div class="platform-card flex flex-col items-center p-6"><h3 class="text-2xl font-bold text-gray-900 mb-6">Moment</h3><div class="w-full space-y-3"><div class="platform-card-item" data-row-index="0">계정ID</div><div class="platform-card-item" data-row-index="1">비용</div><div class="platform-card-item" data-row-index="2">재생수</div><div class="platform-card-item" data-row-index="3">구매 금액</div></div></div>
+                    <div class="platform-card flex flex-col items-center p-6"><h3 class="text-2xl font-bold text-gray-900 mb-6">Meta</h3><div class="w-full space-y-3"><div class="platform-card-item" data-row-index="0">계정ID</div><div class="platform-card-item" data-row-index="1">지출 금액</div><div class="platform-card-item" data-row-index="2">3초 이상 재생</div><div class="platform-card-item" data-row-index="3">구매 전환값</div></div></div>
+                    <div class="platform-card flex flex-col items-center p-6"><h3 class="text-2xl font-bold text-gray-900 mb-6">Google</h3><div class="w-full space-y-3"><div class="platform-card-item" data-row-index="0">고객ID</div><div class="platform-card-item" data-row-index="1">지출 금액</div><div class="platform-card-item" data-row-index="2">조회수</div><div class="platform-card-item" data-row-index="3">전환 가치</div></div></div>
                     <div class="text-blue-500 mx-4 flex items-center justify-center flex-shrink-0"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></div>
-                    <div class="platform-card standard-card flex flex-col items-center p-6"><h3 class="text-2xl font-bold text-blue-800 mb-6">표준화 기준</h3><div class="w-full space-y-3"><div class="platform-card-item standard-card-item font-bold">계정 ID</div><div class="platform-card-item standard-card-item font-bold">비용</div><div class="platform-card-item standard-card-item font-bold">조회수</div><div class="platform-card-item standard-card-item font-bold">구매금액</div></div></div>
+                    <div class="platform-card standard-card flex flex-col items-center p-6"><h3 class="text-2xl font-bold text-blue-800 mb-6">표준화 기준</h3><div class="w-full space-y-3"><div class="platform-card-item standard-card-item font-bold" data-row-index="0">계정 ID</div><div class="platform-card-item standard-card-item font-bold" data-row-index="1">비용</div><div class="platform-card-item standard-card-item font-bold" data-row-index="2">조회수</div><div class="platform-card-item standard-card-item font-bold" data-row-index="3">구매금액</div></div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Page 13: Normalization -->
         <section class="section-page white-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 13</div>
             <div class="container mx-auto px-6 text-center flex flex-col items-center">
@@ -409,7 +390,6 @@
             </div>
         </section>
 
-        <!-- Page 14: Data Labeling -->
         <section class="section-page white-bg" data-theme="light">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 14</div>
             <div class="container mx-auto px-4 text-center">
@@ -436,7 +416,6 @@
             </div>
         </section>
 
-        <!-- Page 15: Part 3 Intro -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 15</div>
             <div class="text-center">
@@ -489,58 +468,56 @@
                 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                 const renderer = new THREE.WebGLRenderer({ canvas: canvas9, alpha: true });
                 renderer.setSize(window.innerWidth, window.innerHeight);
-
                 const particlesGeometry = new THREE.BufferGeometry();
                 const particlesCnt = 5000;
                 const posArray = new Float32Array(particlesCnt * 3);
-                for (let i = 0; i < particlesCnt * 3; i++) {
-                    posArray[i] = (Math.random() - 0.5) * 10;
-                }
+                for (let i = 0; i < particlesCnt * 3; i++) { posArray[i] = (Math.random() - 0.5) * 10; }
                 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
                 const particlesMaterial = new THREE.PointsMaterial({ size: 0.005, color: 0xffffff });
                 const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
                 scene.add(particlesMesh);
                 camera.position.z = 2;
-
                 const clock = new THREE.Clock();
-                const animate = () => {
-                    requestAnimationFrame(animate);
-                    particlesMesh.rotation.y = -0.1 * clock.getElapsedTime();
-                    renderer.render(scene, camera);
-                };
+                const animate = () => { requestAnimationFrame(animate); particlesMesh.rotation.y = -0.1 * clock.getElapsedTime(); renderer.render(scene, camera); };
                 animate();
-
-                window.addEventListener('resize', () => {
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
-                });
+                window.addEventListener('resize', () => { renderer.setSize(window.innerWidth, window.innerHeight); camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); });
             }
 
              // Page 6: Connection Lines Script
             const integrationBox = document.getElementById('integration-box');
             if (integrationBox) {
                 const svg = document.getElementById('connection-lines');
-                const getCenterPoint = (el) => {
-                    if (!el) return null;
-                    return { x: el.offsetLeft + el.offsetWidth / 2, y: el.offsetTop + el.offsetHeight / 2 };
-                };
-                const createLine = (p1, p2, svg, color) => {
-                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                    line.setAttribute('x1', p1.x); line.setAttribute('y1', p1.y);
-                    line.setAttribute('x2', p2.x); line.setAttribute('y2', p2.y);
-                    line.setAttribute('stroke', color); line.setAttribute('stroke-width', '2');
-                    svg.appendChild(line);
-                };
-                const silos = Array.from(integrationBox.querySelectorAll('.silo'));
-                const points = silos.map(silo => getCenterPoint(silo)).filter(p => p !== null);
-                if (points.length > 1) {
-                    for (let i = 0; i < points.length; i++) {
-                        for (let j = i + 1; j < points.length; j++) {
-                             createLine(points[i], points[j], svg, `hsla(${180 + i*25}, 70%, 65%, 0.5)`);
+                if (svg) {
+                    const getCenterPoint = (el) => { if (!el) return null; return { x: el.offsetLeft + el.offsetWidth / 2, y: el.offsetTop + el.offsetHeight / 2 }; };
+                    const createLine = (p1, p2, svg, color) => { const line = document.createElementNS('http://www.w3.org/2000/svg', 'line'); line.setAttribute('x1', p1.x); line.setAttribute('y1', p1.y); line.setAttribute('x2', p2.x); line.setAttribute('y2', p2.y); line.setAttribute('stroke', color); line.setAttribute('stroke-width', '2'); svg.appendChild(line); };
+                    const silos = Array.from(integrationBox.querySelectorAll('.silo'));
+                    const points = silos.map(silo => getCenterPoint(silo)).filter(p => p !== null);
+                    if (points.length > 1) {
+                        for (let i = 0; i < points.length; i++) {
+                            for (let j = i + 1; j < points.length; j++) { createLine(points[i], points[j], svg, `hsla(${180 + i*25}, 70%, 65%, 0.5)`); }
                         }
                     }
                 }
+            }
+
+            // Page 12: Row Highlighting Logic
+            const cardContainer = document.getElementById('page-12-cards');
+            if (cardContainer) {
+                const cardItems = cardContainer.querySelectorAll('.platform-card-item');
+                cardItems.forEach(item => {
+                    item.addEventListener('mouseenter', () => {
+                        const rowIndex = item.dataset.rowIndex;
+                        if (rowIndex === undefined) return;
+                        const itemsToHighlight = cardContainer.querySelectorAll(`.platform-card-item[data-row-index="${rowIndex}"]`);
+                        itemsToHighlight.forEach(el => el.classList.add('highlight-row'));
+                    });
+                    item.addEventListener('mouseleave', () => {
+                        const rowIndex = item.dataset.rowIndex;
+                        if (rowIndex === undefined) return;
+                        const itemsToHighlight = cardContainer.querySelectorAll(`.platform-card-item[data-row-index="${rowIndex}"]`);
+                        itemsToHighlight.forEach(el => el.classList.remove('highlight-row'));
+                    });
+                });
             }
         });
     </script>
