@@ -46,7 +46,10 @@
         /* Backgrounds and Theming */
         .light-bg { background-color: #f9fafb; }
         .white-bg { background-color: #ffffff; }
-        .hero-bg-final { background-color: #000005; color: white; }
+        .hero-bg-final, .end-bg-final {
+            background-color: #000005;
+            color: white;
+        }
         .part-intro-bg-updated {
             background-color: #0b1021;
             color: white;
@@ -55,10 +58,13 @@
                 radial-gradient(circle at 99% 99%, hsla(280, 80%, 55%, 0.35), #0b1021 40%);
             border-bottom: 2px solid rgba(255, 255, 255, 0.1);
         }
+        .part-intro-bg-updated .part-number {
+             color: #4b5563; /* 간지 Part 숫자 색상 수정 */
+        }
         .project-intro-bg { background-color: #0c0a18; color: white; }
 
-        /* Page 1: Hero Section */
-        #hero-particles {
+        /* Page 1 & 22: Hero/End Section */
+        .particle-canvas {
             position: absolute;
             inset: 0;
             width: 100%;
@@ -93,12 +99,10 @@
 
         /* Page 4 & 6: Data Silo Effect */
         @keyframes float-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
-
         .silo {
             position: relative; display: flex; justify-content: center; align-items: center; color: white; font-size: 10px; font-weight: 500; text-align: center; border-radius: 4px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             animation: float-subtle 4s ease-in-out infinite;
         }
-        
         #integration-box .silo {
             animation: float-subtle 6s ease-in-out infinite;
         }
@@ -146,7 +150,19 @@
         .animate-title { animation-delay: 0.2s; }
         .animate-subtitle { animation-delay: 0.5s; }
         .animate-desc { animation-delay: 0.8s; }
-        .atlas-highlight { color: #a5b4fc; }
+        .atlas-highlight {
+            background: linear-gradient(to right, #2dd4bf, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes cinematic-glow {
+            0% { text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 12px rgba(165,180,252,0.3), 0 0 20px rgba(129,140,248,0.2); }
+            50% { text-shadow: 0 0 16px rgba(255,255,255,0.5), 0 0 24px rgba(165,180,252,0.5), 0 0 40px rgba(129,140,248,0.3); }
+            100% { text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 12px rgba(165,180,252,0.3), 0 0 20px rgba(129,140,248,0.2); }
+        }
+        .project-atlas-title-effect {
+            animation: cinematic-glow 5s infinite ease-in-out;
+        }
 
         /* Page Title & Subtitle Alignment */
         .page-header-container {
@@ -191,7 +207,7 @@
         }
         .timeline-container { display: flex; align-items: center; width: 100%; }
         .timeline-label { font-size: 1.25rem; font-weight: 800; color: #1f2937; min-width: 140px; text-align: right; padding-right: 2rem; }
-        .timeline-bar { display: flex; height: 80px; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); flex-grow: 1; }
+        .timeline-bar { display: flex; height: auto; min-height: 80px; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15); flex-grow: 1; }
         .timeline-segment {
             display: flex; flex-direction: column; justify-content: space-between; align-items: center; color: white; font-size: 0.875rem; font-weight: 600; text-align: center;
             padding: 0.8rem 0.5rem; white-space: normal; line-height: 1.2; box-sizing: border-box; border-right: 1px solid rgba(255,255,255,0.2);
@@ -199,9 +215,7 @@
         }
         .timeline-segment:last-child { border-right: none; }
         .timeline-segment:hover { transform: scale(1.12); box-shadow: 0 12px 30px rgba(0,0,0,0.5); z-index: 10; }
-        .timeline-percentage { font-size: 1rem; font-weight: 500; }
-        .sparkle-icon { position: absolute; top: 5px; right: 5px; font-size: 1.2em; color: yellow; opacity: 0; transition: opacity 0.2s ease-out; cursor: pointer; z-index: 11; }
-        .timeline-segment:hover .sparkle-icon { opacity: 1; }
+        .timeline-percentage { font-size: 1rem; font-weight: 500; margin-top: auto; padding-top: 4px; }
         
         /* Page 17 */
         .donut-chart-path {
@@ -235,15 +249,17 @@
         .pain-point-left-area { flex-shrink: 0; width: 350px; }
         .pain-point-image { border-radius: 0.75rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); object-fit: cover; width: 100%; height: 100%; }
         .pain-point-table-unified { background-color: #ffffff; border-collapse: collapse; width: 100%; border-radius: 0.75rem; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; }
-        .pain-point-table-unified th { background-color: #3b82f6; color: white; font-weight: 700; padding: 0.75rem 1rem; border: 1px solid #ddd; text-align: center; vertical-align: middle; }
-        .pain-point-table-unified td { padding: 0.75rem 1rem; border: 1px solid #ddd; text-align: center; vertical-align: middle; color: #444; white-space: nowrap; }
+        .pain-point-table-unified th { background-color: #3b82f6; color: white; font-weight: 700; padding: 0.75rem 1rem; border: 1px solid #ddd; text-align: center; vertical-align: middle; white-space: nowrap; }
+        .pain-point-table-unified td { padding: 0.75rem 1rem; border: 1px solid #ddd; text-align: center; vertical-align: middle; color: #444; }
         .pain-point-table-unified td:nth-child(2) { text-align: left; }
         .highlight-count { font-weight: bold; color: #4b5563; }
         .pain-point-table-unified tbody tr { transition: all 0.2s ease-in-out; cursor: pointer; }
         .pain-point-table-unified tbody tr:hover { background-color: #dbeafe; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); z-index: 1; position: relative; color: #1e40af; }
         .pain-point-table-unified .highlight-row { background-color: #eef2ff; font-weight: bold; font-size: 1.125rem; }
-        .pain-point-table-unified .highlight-row td { color: #312e81; font-weight: 700;}
-        .pain-point-table-unified .highlight-row:hover { background-color: #c7d2fe; }
+        .pain-point-table-unified .highlight-row td { color: #312e81; font-weight: 700; background-color: #e0e7ff; }
+        .pain-point-table-unified .highlight-row:hover td { background-color: #c7d2fe; }
+        .pain-point-table-unified .highlight-row .highlight-count { color: #312e81; font-size: 1.2em; }
+
 
         /* Page 19: New Purpose Table */
         .new-purpose-table { background-color: #ffffff; border-collapse: collapse; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid #e0e0e0; max-width: 1100px; }
@@ -330,16 +346,6 @@
             white-space: nowrap;
             text-align: center;
         }
-
-        /* Modal Styles */
-        .modal { position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; }
-        .modal-content { background-color: #fefefe; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); animation-name: animatetop; animation-duration: 0.4s; max-width: 500px; width: 90%; position: relative; }
-        @keyframes animatetop { from {top: -300px; opacity: 0} to {top: 0; opacity: 1} }
-        .close-button { color: #aaa; float: right; font-size: 28px; font-weight: bold; position: absolute; top: 10px; right: 15px; }
-        .close-button:hover, .close-button:focus { color: black; text-decoration: none; cursor: pointer; }
-        .loading-indicator { display: flex; justify-content: center; align-items: center; min-height: 100px; color: #4b5563; }
-        .spinner { border: 4px solid rgba(0, 0, 0, 0.1); border-left-color: #3b82f6; border-radius: 50%; width: 30px; height: 30px; animation: spin 1s linear infinite; margin-right: 10px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body class="text-gray-800">
@@ -353,18 +359,23 @@
     <main>
         <!-- Page 1 -->
         <section class="section-page hero-bg-final text-center" data-theme="dark">
-            <div id="hero-particles"></div>
-            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 1</div>
-            <h2 class="text-6xl md:text-8xl font-black leading-tight my-4"><span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span></h2>
-            <p class="text-2xl text-indigo-300 font-semibold tracking-wide mt-24">Ontology Design Lab</p>
-            <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mt-6">2025.06.24</p>
+            <div class="particle-canvas"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                <div class="flex-grow flex flex-col items-center justify-center">
+                    <h2 class="text-6xl md:text-8xl font-black leading-tight my-4 project-atlas-title-effect"><span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span></h2>
+                </div>
+                <div class="pb-8">
+                    <p class="text-2xl text-indigo-300 font-semibold tracking-wide">Ontology Design Lab</p>
+                    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mt-2">2025.06.24</p>
+                </div>
+            </div>
         </section>
         
         <!-- Page 2 -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 2</div>
             <div class="text-center">
-                <p class="text-3xl text-blue-400 font-semibold tracking-wide">Part 1.</p>
+                <p class="text-3xl font-semibold tracking-wide part-number">Part 1.</p>
                 <h2 class="text-5xl md:text-6xl font-bold mt-4">우리는 왜 변화해야만 하는가</h2>
             </div>
         </section>
@@ -421,10 +432,10 @@
             <p class="page-subtitle mt-8">업력 9년차 디지털퍼스트, 업력 5년차 디지털트리니티<br>그동안 집행한 수많은 캠페인 데이터들, 지금 어디에, 어떻게 활용되고 있나요?</p>
             <div class="mt-16 w-full max-w-4xl">
                 <div class="flex justify-center items-end gap-8 flex-wrap">
-                    <div class="silo twitching silo-blue" style="width: 100px; height: 120px; animation-delay: -0.5s;">Campaign<br>Data</div>
-                    <div class="silo twitching silo-teal" style="width: 90px; height: 100px; animation-delay: -1s;">Campaign<br>Data</div>
-                    <div class="silo twitching silo-indigo" style="width: 120px; height: 150px; animation-delay: -0.2s;">Campaign<br>Data</div>
-                    <div class="silo twitching silo-purple" style="width: 100px; height: 130px; animation-delay: -0.7s;">Campaign<br>Data</div>
+                    <div class="silo silo-blue" style="animation-delay: -0.5s;">Campaign<br>Data</div>
+                    <div class="silo silo-teal" style="animation-delay: -1s;">Campaign<br>Data</div>
+                    <div class="silo silo-indigo" style="animation-delay: -0.2s;">Campaign<br>Data</div>
+                    <div class="silo silo-purple" style="animation-delay: -0.7s;">Campaign<br>Data</div>
                     <div class="text-3xl font-bold text-gray-400 leading-tight self-end pb-4">...</div>
                 </div>
             </div>
@@ -483,8 +494,8 @@
             <div class="w-full max-w-6xl text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">광고 데이터 통합, 왜 지금까지 못했을까?</h2>
                 <div class="mt-10 page-subtitle text-left max-w-4xl mx-auto space-y-8">
-                    <p class="flex items-start"><strong class="text-2xl text-blue-600 mr-3">1</strong><span><strong class="text-blue-600 font-semibold">단순한 취합이 아니기 때문입니다.</strong><br><span class="ml-1">흩어진 데이터를 정리하고 분류·선별하는 복잡한 구조화 작업입니다.</span></span></p>
-                    <p class="flex items-start"><strong class="text-2xl text-blue-600 mr-3">2</strong><span><strong class="text-blue-600 font-semibold">데이터 활용 목적이 불분명했기 때문입니다.</strong><br><span class="ml-1">사용자 니즈에 기반한 구조화가 없었기에, 데이터가 있어도 제대로 활용되지 못했습니다.</span></span></p>
+                    <p class="flex items-start"><strong class="text-2xl text-blue-600 mr-3 shrink-0">•</strong><span><strong class="text-blue-600 font-semibold">단순한 취합이 아니기 때문입니다.</strong><br><span class="ml-1">흩어진 데이터를 정리하고 분류·선별하는 복잡한 구조화 작업입니다.</span></span></p>
+                    <p class="flex items-start"><strong class="text-2xl text-blue-600 mr-3 shrink-0">•</strong><span><strong class="text-blue-600 font-semibold">데이터 활용 목적이 불분명했기 때문입니다.</strong><br><span class="ml-1">사용자 니즈에 기반한 구조화가 없었기에, 데이터가 있어도 제대로 활용되지 못했습니다.</span></span></p>
                 </div>
                 <div class="mt-12 w-full max-w-5xl mx-auto space-y-6">
                     <div class="grid grid-cols-12 items-center gap-4 text-center"><div class="col-start-2 col-span-4 text-2xl font-bold text-gray-500">As Is</div><div class="col-start-8 col-span-4 text-2xl font-bold text-blue-600">To Be</div></div>
@@ -499,7 +510,7 @@
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 8</div>
             <div class="text-center">
-                <p class="text-3xl text-blue-400 font-semibold tracking-wide">Part 2.</p>
+                <p class="text-3xl font-semibold tracking-wide part-number">Part 2.</p>
                 <h2 class="text-5xl md:text-6xl font-bold mt-4">우리의 해결책, Project ATLAS</h2>
             </div>
         </section>
@@ -523,7 +534,7 @@
                         </g>
                     </svg>
                 </div>
-                <h2 class="text-6xl md:text-8xl font-black text-white animate-reveal animate-title mb-8">Project ATLAS</h2>
+                <h2 class="text-6xl md:text-8xl font-black text-white animate-reveal animate-title mb-8 project-atlas-title-effect">Project ATLAS</h2>
                 <p class="mt-4 text-2xl text-gray-400 tracking-wider animate-reveal animate-subtitle">
                     <span class="atlas-highlight">A</span>ll-in-one <span class="atlas-highlight">T</span>otal <span class="atlas-highlight">L</span>inkage for <span class="atlas-highlight">A</span>d <span class="atlas-highlight">S</span>ystems
                 </p>
@@ -641,7 +652,7 @@
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 15</div>
             <div class="text-center">
-                <p class="text-3xl text-blue-400 font-semibold tracking-wide">Part 3.</p>
+                <p class="text-3xl font-semibold tracking-wide part-number">Part 3.</p>
                 <h2 class="text-5xl md:text-6xl font-bold mt-4">ATLAS가 그리는 미래</h2>
             </div>
         </section>
@@ -744,6 +755,7 @@
                         <div class="mt-2 w-full bg-white border border-blue-300 rounded-xl p-4">
                             <p class="text-lg text-blue-700">예상 영업이익</p>
                             <div class="flex items-baseline justify-center">
+                                
                                 <p class="text-4xl font-bold text-blue-600">229<span class="text-2xl ml-1">억원</span></p>
                                 <span class="ml-3 text-green-600 font-bold text-xl">+186%</span>
                             </div>
@@ -861,7 +873,7 @@
                 Project ATLAS는 광고 데이터 통합을 기반으로, 현업에서 요구되는 업무 자동화의 청사진을 제시합니다.<br>
                 현재는 Prototype 단계이지만, AI와 데이터를 기반으로 자동화될 수 있음을 증명하고 있습니다.
             </p>
-            <p class="page-subtitle mt-8 text-blue-600 font-bold">
+            <p class="page-subtitle mt-8 text-2xl font-bold text-blue-600">
                 이제부터, 그 가능성을 직접 확인해 보겠습니다.
             </p>
             <div class="screenshot-grid mx-auto">
@@ -913,7 +925,7 @@
                         <p class="page21-grid-text">Product No.5</p>
                     </div>
                     <div class="page21-grid-item">
-                        <img src="https://plus.unsplash.com/premium_photo-1725985758251-b49c6b581d17?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Product 6: Lab Research" onerror="this.onerror=null;this.src='https://placehold.co/420x260/a7d9ff/0369a1?text=Product+No.6';">
+                        <img src="https://images.unsplash.com/photo-1581092334644-88439f975191?q=80&w=2070" alt="Product 6: Lab Research" onerror="this.onerror=null;this.src='https://placehold.co/420x260/a7d9ff/0369a1?text=Product+No.6';">
                         <div class="page21-grid-overlay"></div>
                         <p class="page21-grid-text">Product No.6</p>
                     </div>
@@ -922,44 +934,21 @@
         </section>
 
         <!-- Page 22 -->
-        <section class="section-page light-bg text-center" data-theme="light">
-            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 22</div>
-            <p class="mt-4 text-2xl md:text-3xl text-gray-800 max-w-3xl mx-auto leading-relaxed font-semibold">
-                Project ATLAS 발표를 경청해 주셔서 감사합니다.
-            </p>
-            <div class="mt-12 text-center">
-                <p class="text-5xl md:text-6xl font-extrabold text-blue-600">Thank You!</p>
-                <div class="mt-8 text-gray-600 text-xl font-medium">
-                    <p>Ontology Design Lab</p>
+        <section class="section-page end-bg-final text-center" data-theme="dark">
+            <div class="particle-canvas"></div>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                <div class="flex-grow flex flex-col items-center justify-center">
+                     <p class="text-4xl md:text-5xl font-extrabold text-white mb-12">Thank You</p>
+                     <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                        Project ATLAS 발표를 경청해 주셔서 감사합니다.
+                    </p>
+                </div>
+                <div class="pb-8">
+                    <p class="text-2xl text-indigo-300 font-semibold tracking-wide">Ontology Design Lab</p>
                 </div>
             </div>
         </section>
     </main>
-    
-    <!-- Campaign Idea Modal -->
-    <div id="campaignIdeaModal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h4 class="text-2xl font-bold text-gray-900 mb-4">✨ 캠페인 전략 아이디어 생성</h4>
-            <div class="mb-4">
-                <label for="productInput" class="block text-gray-700 text-sm font-bold mb-2">제품/서비스:</label>
-                <input type="text" id="productInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="예: 여름 음료, 신상 스니커즈">
-            </div>
-            <div class="mb-6">
-                <label for="targetInput" class="block text-gray-700 text-sm font-bold mb-2">타겟 고객:</label>
-                <input type="text" id="targetInput" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="예: MZ세대, 30대 워킹맘">
-            </div>
-            <button id="generateIdeaButton" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline">
-                아이디어 생성
-            </button>
-            <div id="ideaOutput" class="mt-6 p-4 bg-gray-100 rounded-lg max-h-60 overflow-y-auto text-gray-800 text-sm">
-                <div class="loading-indicator hidden">
-                    <div class="spinner"></div>아이디어를 생성 중입니다...
-                </div>
-                <p id="ideaText"></p>
-            </div>
-        </div>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -1095,7 +1084,6 @@
                 }
             }
 
-
             // Page 21: Marquee Animation
             const page21 = document.getElementById('page-21');
             const marqueeContent21 = document.getElementById('marquee-content-21');
@@ -1113,69 +1101,6 @@
                     });
                 }, { threshold: 0.1 });
                 marqueeObserver.observe(page21);
-            }
-
-            // --- Gemini API Modal ---
-            const campaignIdeaModal = document.getElementById('campaignIdeaModal');
-            if(campaignIdeaModal) {
-                const closeButton = campaignIdeaModal.querySelector('.close-button');
-                const generateIdeaButton = document.getElementById('generateIdeaButton');
-                const productInput = document.getElementById('productInput');
-                const targetInput = document.getElementById('targetInput');
-                const ideaText = document.getElementById('ideaText');
-                const loadingIndicator = document.querySelector('#ideaOutput .loading-indicator');
-
-                const closeModal = () => campaignIdeaModal.classList.add('hidden');
-
-                closeButton.addEventListener('click', closeModal);
-                window.addEventListener('click', (event) => {
-                    if (event.target == campaignIdeaModal) closeModal();
-                });
-
-                generateIdeaButton.addEventListener('click', async () => {
-                    const product = productInput.value.trim();
-                    const target = targetInput.value.trim();
-
-                    if (!product || !target) {
-                        ideaText.textContent = "제품/서비스와 타겟 고객을 모두 입력해주세요.";
-                        return;
-                    }
-
-                    ideaText.textContent = '';
-                    loadingIndicator.classList.remove('hidden');
-
-                    const prompt = `당신은 경험 많은 광고 기획자입니다. 다음 조건에 맞는 창의적인 캠페인 전략 아이디어를 간결하게 제안해주세요.
-    제품/서비스: ${product}
-    타겟 고객: ${target}
-    핵심 메시지, 주요 채널, 실행 아이디어 포함하여 200자 내외로 작성해주세요.`;
-
-                    try {
-                        let chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
-                        const payload = { contents: chatHistory };
-                        const apiKey = ""; // Provided by environment
-                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        const result = await response.json();
-                        
-                        if (result.candidates?.[0]?.content?.parts?.[0]?.text) {
-                            ideaText.textContent = result.candidates[0].content.parts[0].text;
-                        } else {
-                            ideaText.textContent = "아이디어 생성에 실패했습니다. 다시 시도해주세요.";
-                            console.error("Gemini API response structure unexpected:", result);
-                        }
-                    } catch (error) {
-                        ideaText.textContent = "아이디어 생성 중 오류가 발생했습니다. 네트워크 연결을 확인해주세요.";
-                        console.error("Error calling Gemini API:", error);
-                    } finally {
-                        loadingIndicator.classList.add('hidden');
-                    }
-                });
             }
         });
     </script>
