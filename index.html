@@ -100,11 +100,15 @@
         /* Page 4 & 6: Data Silo Effect */
         @keyframes float-subtle { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
         .silo {
-            position: relative; display: flex; justify-content: center; align-items: center; color: white; font-size: 10px; font-weight: 500; text-align: center; border-radius: 4px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            position: relative; display: flex; justify-content: center; align-items: center; color: white;
+            font-size: 1.125rem; /* text-lg */
+            line-height: 1.25;
+            font-weight: 600; text-align: center; border-radius: 4px; box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             animation: float-subtle 4s ease-in-out infinite;
         }
         #integration-box .silo {
             animation: float-subtle 6s ease-in-out infinite;
+            font-size: 10px;
         }
         .silo::before, .silo::after { content: ''; position: absolute; left: 0; width: 100%; height: 24px; border-radius: 50%; }
         .silo::before { top: 0; transform: translateY(-50%); border: 1px solid rgba(255,255,255,0.2); }
@@ -395,13 +399,12 @@
         <!-- Page 1 -->
         <section class="section-page hero-bg-final text-center" data-theme="dark">
             <div class="particle-canvas"></div>
-            <div class="relative z-10 flex flex-col items-center justify-center h-full w-full">
-                <div class="flex-grow flex flex-col items-center justify-center">
-                     <h2 class="text-6xl md:text-8xl font-black leading-tight my-4 project-atlas-title-effect"><span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span></h2>
+            <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                 <div class="flex-grow flex flex-col items-center justify-center">
+                    <h2 class="text-6xl md:text-8xl font-black leading-tight my-4 project-atlas-title-effect"><span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span></h2>
                 </div>
-                <div class="absolute bottom-10 text-center">
+                <div class="pb-8">
                     <p class="text-2xl text-indigo-300 font-semibold tracking-wide">Ontology Design Lab</p>
-                    <p class="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mt-2">2025.06.24</p>
                 </div>
             </div>
         </section>
@@ -516,7 +519,11 @@
                     이제는 데이터를 '모으고, 바로 쓰기 위해' 통합해야 할 때 입니다.
                 </p>
                 <div class="mt-12 flex flex-col md:flex-row justify-center items-start gap-8">
-                    <div class="text-center"><h3 class="text-xl font-bold mb-4 text-gray-500 text-center">Data Silo</h3><div class="flex flex-col gap-6 items-center mt-6"><div class="relative z-30 silo silo-blue" style="width: 70px; height: 70px; animation: float-subtle 4s ease-in-out infinite;"><span>Campaign<br>Data</span></div><div class="relative z-20 silo silo-indigo" style="width: 70px; height: 70px; animation: float-subtle 4s ease-in-out infinite -1s;"><span>Campaign<br>Data</span></div><div class="relative z-10 silo silo-teal" style="width: 70px; height: 70px; animation: float-subtle 4s ease-in-out infinite -2s;"><span>Campaign<br>Data</span></div><div class="text-3xl font-bold text-gray-400 leading-tight -mt-4">.<br>.<br>.</div></div></div>
+                    <div class="text-center"><h3 class="text-xl font-bold mb-4 text-gray-500 text-center">Data Silo</h3><div class="flex flex-col gap-6 items-center mt-6">
+                    <div class="relative z-30 silo silo-blue text-xs" style="width: 70px; height: 70px; animation: float-subtle 4s ease-in-out infinite;"><span>Campaign<br>Data</span></div>
+                    <div class="relative z-20 silo silo-indigo text-xs" style="width: 70px; height: 70px; animation: float-subtle 4s ease-in-out infinite -1s;"><span>Campaign<br>Data</span></div>
+                    <div class="relative z-10 silo silo-teal text-xs" style="width: 70px; height: 70px; animation: float-subtle 4s ease-in-out infinite -2s;"><span>Campaign<br>Data</span></div>
+                    <div class="text-3xl font-bold text-gray-400 leading-tight -mt-4">.<br>.<br>.</div></div></div>
                     <div class="w-24 md:pt-36 transform md:rotate-0 rotate-90"><svg viewBox="0 0 105 50" class="w-full h-auto" preserveAspectRatio="xMidYMid meet"><defs><linearGradient id="arrowGradientPage6" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" /><stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" /></linearGradient></defs><path d="M 0 25 L 90 25 M 85 15 L 100 25 L 85 35" stroke="url(#arrowGradientPage6)" stroke-width="8" fill="none" stroke-linecap="round"/></svg></div>
                     <div class="text-center"><h3 class="text-xl font-bold mb-4 text-gray-500 text-center">Data Integration</h3><div id="integration-box" class="relative bg-white/10 backdrop-blur-sm border-2 border-gray-300 rounded-2xl p-4" style="width: 450px; height: 450px;"><svg id="connection-lines" class="absolute inset-0 w-full h-full" style="opacity: 0.6;"></svg><div id="isilo1" class="absolute silo silo-blue" style="width: 100px; height: 100px; top: 38%; left: 35%; animation: float-subtle 6s ease-in-out infinite -1s;"><span>Campaign<br>Data</span></div><div id="isilo2" class="absolute silo silo-purple" style="width: 75px; height: 75px; top: 12%; left: 60%; animation: float-subtle 6s ease-in-out infinite -2.5s;"><span>Campaign<br>Data</span></div><div id="isilo3" class="absolute silo silo-teal" style="width: 80px; height: 80px; top: 15%; left: 8%; animation: float-subtle 6s ease-in-out infinite -4s;"><span>Campaign<br>Data</span></div><div id="isilo4" class="absolute silo silo-red" style="width: 60px; height: 60px; top: 68%; left: 8%; animation: float-subtle 6s ease-in-out infinite -1.8s;"><span>Data</span></div><div id="isilo5" class="absolute silo silo-amber" style="width: 85px; height: 85px; top: 70%; left: 65%; animation: float-subtle 6s ease-in-out infinite -5.2s;"><span>Campaign<br>Data</span></div><div id="isilo6" class="absolute silo silo-pink" style="width: 50px; height: 50px; top: 5%; right: 10%; animation: float-subtle 6s ease-in-out infinite 0s;"><span>Data</span></div><div id="isilo7" class="absolute silo silo-cyan" style="width: 55px; height: 55px; bottom: 5%; left: 45%; animation: float-subtle 6s ease-in-out infinite -3.3s;"><span>Data</span></div><div id="isilo8" class="absolute silo silo-indigo" style="width: 45px; height: 45px; bottom: 12%; right: 5%; animation: float-subtle 6s ease-in-out infinite -0.5s;"><span>Data</span></div></div></div>
                 </div>
@@ -570,7 +577,7 @@
                     </svg>
                 </div>
                 <h2 class="text-6xl md:text-8xl font-black animate-reveal animate-title mb-8 project-atlas-title-effect">
-                <span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span>
+                    <span class="project-title">Project</span> <span class="atlas-title-final">ATLAS</span>
                 </h2>
                 <p class="mt-4 text-2xl text-gray-400 tracking-wider animate-reveal animate-subtitle">
                     <span class="atlas-highlight">A</span>ll-in-one <span class="atlas-highlight">T</span>otal <span class="atlas-highlight">L</span>inkage for <span class="atlas-highlight">A</span>d <span class="atlas-highlight">S</span>ystems
@@ -612,7 +619,7 @@
                 <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">Step1. 온톨로지 기반 데이터 구조화</h2>
                 </div>
-                <img src="images/ontology.png" alt="온톨로지 구조도" class="rounded-lg mx-auto w-full max-w-7xl h-auto object-contain" style="max-height: 65vh;" onerror="this.onerror=null;this.src='https://placehold.co/1200x700/cccccc/333333?text=Ontology+Diagram';">
+                <img src="images/ontology" alt="온톨로지 구조도" class="rounded-lg mx-auto w-full max-w-7xl h-auto object-contain" style="max-height: 65vh;" onerror="this.onerror=null;this.src='https://placehold.co/1200x700/cccccc/333333?text=Ontology+Diagram';">
             </div>
         </section>
 
@@ -642,12 +649,13 @@
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Step3. 데이터 정규화</h2>
                     <p class="page-subtitle mt-4">분석에 유용한 항목을 중심으로 매체별 데이터를 선별·정리해 하나의 기준으로 정규화했습니다.</p>
                 </div>
-                <div class="w-full max-w-screen-lg overflow-hidden">
-                    <div class="flex flex-nowrap justify-center items-stretch gap-8 -ml-32">
-                        <div class="flex-shrink-0 normalization-table w-[175px] opacity-50"><div class="normalization-table-header">...</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td>...</td></tr><tr><td>...</td></tr><tr><td>...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td>...</td></tr></tbody></table></div></div>
+                <div class="w-full max-w-full">
+                    <div class="flex flex-nowrap justify-center items-stretch gap-8">
+                        <div class="flex-shrink-0 normalization-table opacity-50"><div class="normalization-table-header">...</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td class="font-bold w-1/4">...</td><td>...</td></tr><tr><td class="font-bold w-1/4">...</td><td>...</td></tr><tr><td class="font-bold w-1/4">...</td><td>...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td class="font-bold text-blue-800 w-1/4">...</td><td class="font-bold text-blue-800">...</td></tr></tbody></table></div></div>
                         <div class="flex-shrink-0 normalization-table"><div class="normalization-table-header">연령 구분 정규화</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td class="font-bold w-1/4">Moment</td><td>15-19, 20-24, 25-29...</td></tr><tr><td class="font-bold w-1/4">Meta</td><td>13-17, 18-24, 25-34...</td></tr><tr><td class="font-bold w-1/4">Google</td><td>18-24, 25-34, 35-44...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td class="font-bold text-blue-800 w-1/4">통합 기준</td><td class="font-bold text-blue-800">13-17, 18-24, 25-34, 35-44...</td></tr></tbody></table></div></div>
                         <div class="flex-shrink-0 normalization-table"><div class="normalization-table-header">기기 구분 정규화</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td class="font-bold w-1/4">Moment</td><td>Android, iOS</td></tr><tr><td class="font-bold w-1/4">Meta</td><td>데스크톱, Android 스마트폰...</td></tr><tr><td class="font-bold w-1/4">Google</td><td>컴퓨터, 휴대전화, 태블릿...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td class="font-bold text-blue-800 w-1/4">통합 기준</td><td class="font-bold text-blue-800">PC, Mobile, TV, 기타</td></tr></tbody></table></div></div>
                         <div class="flex-shrink-0 normalization-table"><div class="normalization-table-header">지역 구분 정규화</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td class="font-bold w-1/4">Moment</td><td>서울특별시, 경기도, 제주특별자치도, 해외, 알 수 없음</td></tr><tr><td class="font-bold w-1/4">Meta</td><td>KR, US, HK, TH</td></tr><tr><td class="font-bold w-1/4">Google</td><td>대한민국, 미국, 홍콩, 대만</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td class="font-bold text-blue-800 w-1/4">통합 기준</td><td class="font-bold text-blue-800">대한민국, 미국, 홍콩, 대만, 기타</td></tr></tbody></table></div></div>
+                         <div class="flex-shrink-0 normalization-table opacity-50"><div class="normalization-table-header">...</div><div class="table-content"><table class="text-sm text-gray-700"><tbody><tr><td class="font-bold w-1/4">...</td><td>...</td></tr><tr><td class="font-bold w-1/4">...</td><td>...</td></tr><tr><td class="font-bold w-1/4">...</td><td>...</td></tr></tbody></table></div><div class="table-footer"><table class="text-sm text-gray-700"><tbody><tr class="bg-blue-50"><td class="font-bold text-blue-800 w-1/4">...</td><td class="font-bold text-blue-800">...</td></tr></tbody></table></div></div>
                     </div>
                 </div>
             </div>
