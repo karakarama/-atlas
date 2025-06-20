@@ -129,7 +129,6 @@
         /* 9페이지 배경 및 컨텐츠 */
         .project-intro-bg { background-color: #0c0a18; color: white; }
         #starfield-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
-        .content-wrapper { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 90%; max-width: 1400px; }
         @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         .animate-reveal { opacity: 0; transform: translateY(20px); animation: fadeIn 1s forwards; }
         .logo-container { animation: fadeIn 1s forwards, subtle-glow 5s infinite 1s ease-in-out; }
@@ -312,26 +311,34 @@
                 <h2 class="text-5xl md:text-6xl font-bold mt-4">우리의 해결책, Project ATLAS</h2>
             </div>
         </section>
-
+        <!-- Page 9: Project Intro (수정된 코드) -->
         <section class="section-page project-intro-bg" data-theme="dark">
             <canvas id="starfield-canvas"></canvas>
-            <div class="content-wrapper">
-                <div class="absolute top-[-3rem] left-[-3rem] text-lg font-semibold text-gray-400">Page 9</div>
-                <div class="mb-4 logo-container">
-                    <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="coreGradient" x1="0.5" y1="0" x2="0.5" y2="1"><stop offset="0%" style="stop-color: #2dd4bf"/><stop offset="100%" style="stop-color: #14b8a6"/></linearGradient></defs>
-                        <g transform="translate(0, 5)"><path d="M50 20 L80 80 L20 80 Z" stroke="url(#coreGradient)" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/><path d="M35 68 H65" stroke="white" stroke-width="5" stroke-linecap="round"/></g>
-                    </svg>
-                </div>
-                <h2 class="text-5xl md:text-7xl font-black text-white animate-reveal animate-title">Project ATLAS</h2>
-                <p class="mt-4 text-2xl text-gray-400 tracking-wider animate-reveal animate-subtitle">
-                    <span class="atlas-highlight">A</span>ll-in-one <span class="atlas-highlight">T</span>otal <span class="atlas-highlight">L</span>inkage for <span class="atlas-highlight">A</span>d <span class="atlas-highlight">S</span>ystems
-                </p>
-                <p class="mt-12 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-reveal animate-desc">
-                    ATLAS는 파편화되고 유실되는 전사 데이터를 통합하여<br>
-                    <strong class="text-blue-400">데이터 자산의 가치를 극대화</strong>하기 위해 시작한 프로젝트입니다.
-                </p>
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 9</div>
+            
+            <!-- 아래 content-wrapper div를 삭제하고 콘텐츠를 section의 자식으로 둡니다. -->
+            <div class="mb-4 logo-container">
+                <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="coreGradient" x1="0.5" y1="0" x2="0.5" y2="1">
+                            <stop offset="0%" style="stop-color: #2dd4bf"/>
+                            <stop offset="100%" style="stop-color: #14b8a6"/>
+                        </linearGradient>
+                    </defs>
+                    <g transform="translate(0, 5)">
+                        <path d="M50 20 L80 80 L20 80 Z" stroke="url(#coreGradient)" stroke-width="5" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
+                        <path d="M35 68 H65" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                    </g>
+                </svg>
             </div>
+            <h2 class="text-5xl md:text-7xl font-black text-white animate-reveal animate-title">Project ATLAS</h2>
+            <p class="mt-4 text-2xl text-gray-400 tracking-wider animate-reveal animate-subtitle">
+                <span class="atlas-highlight">A</span>ll-in-one <span class="atlas-highlight">T</span>otal <span class="atlas-highlight">L</span>inkage for <span class="atlas-highlight">A</span>d <span class="atlas-highlight">S</span>ystems
+            </p>
+            <p class="mt-12 text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-reveal animate-desc">
+                ATLAS는 파편화되고 유실되는 전사 데이터를 통합하여<br>
+                <strong class="text-blue-400">데이터 자산의 가치를 극대화</strong>하기 위해 시작한 프로젝트입니다.
+            </p>
         </section>
 
         <section class="section-page light-bg text-center" data-theme="light">
