@@ -257,13 +257,6 @@
         .timeline-percentage { font-size: 1rem; font-weight: 500; margin-top: auto; padding-top: 4px; }
         
         /* Page 18 */
-        .donut-chart-path {
-            stroke-dasharray: 0, 100;
-            animation: fill-donut 2s 0.5s ease-out forwards;
-        }
-        @keyframes fill-donut {
-            to { stroke-dasharray: 35, 100; }
-        }
         .fade-in-up {
             opacity: 0;
             transform: translateY(20px);
@@ -274,11 +267,6 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-        }
-        .atlas-gradient-text {
-            background: linear-gradient(90deg, #0D9488, #2563EB);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
         
         /* Page 19: Pain Point Table */
@@ -411,6 +399,7 @@
         
         <!-- Page 2 -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
+             <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 2</div>
             <div class="text-center">
                 <p class="text-3xl font-semibold tracking-wide part-number">Part 1.</p>
                 <h2 class="text-5xl md:text-6xl font-bold mt-4">우리는 왜 변화해야만 하는가</h2>
@@ -419,6 +408,7 @@
 
         <!-- Page 3 -->
         <section class="section-page light-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-500">Page 3</div>
             <div class="container mx-auto px-4 max-w-6xl">
                 <div class="text-center mb-12">
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900">광고 대행업, 생존의 기로에 서다</h2>
@@ -463,6 +453,7 @@
 
         <!-- Page 4 -->
         <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 4</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">잠자는 데이터 자산, 이대로 방치해도 괜찮을까요?</h2>
             <p class="page-subtitle mt-8">업력 9년차 디지털퍼스트, 업력 5년차 디지털트리니티<br>그동안 집행한 수많은 캠페인 데이터들, 지금 어디에, 어떻게 활용되고 있나요?</p>
             <div class="mt-16 w-full max-w-4xl">
@@ -479,6 +470,7 @@
 
         <!-- Page 5 -->
         <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 5</div>
             <div class="w-full max-w-6xl">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">방치된 데이터는 조직의 경쟁력을 저해시킵니다.</h2>
                 <p class="page-subtitle mt-8">데이터가 분산되어 통합되지 않으면 업무 효율이 악화되며, <br>이는 결국 기업에 실질적인 손해로 이어집니다.</p>
@@ -506,6 +498,7 @@
         
         <!-- Page 6 -->
         <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 6</div>
             <div class="w-full max-w-6xl">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
                     잠자는 자산을 깨우는 방법 : <span class="text-blue-600">데이터 통합 !</span>
@@ -527,6 +520,7 @@
 
         <!-- Page 7 -->
         <section class="section-page light-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 7</div>
             <div class="w-full max-w-6xl text-center">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">광고 데이터 통합, 왜 지금까지 못했을까?</h2>
                 <div class="mt-10 page-subtitle text-left max-w-4xl mx-auto space-y-8">
@@ -544,6 +538,7 @@
 
         <!-- Page 8 -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 8</div>
             <div class="text-center">
                 <p class="text-3xl font-semibold tracking-wide part-number">Part 2.</p>
                 <h2 class="text-5xl md:text-6xl font-bold mt-4">우리의 해결책, Project ATLAS</h2>
@@ -553,6 +548,7 @@
         <!-- Page 9 -->
         <section class="section-page project-intro-bg" data-theme="dark">
             <canvas id="starfield-canvas"></canvas>
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 9</div>
             <div class="relative z-10 flex flex-col items-center justify-center text-center h-full">
                 <div class="mb-8 logo-container">
                     <svg class="w-24 h-24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -583,6 +579,7 @@
 
         <!-- Page 10 -->
         <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 10</div>
             <div class="container mx-auto px-4 text-center flex flex-col justify-center items-center">
                 <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 whitespace-nowrap">Project ATLAS, 이렇게 데이터 통합을 해결합니다.</h2>
@@ -605,6 +602,7 @@
         
         <!-- Page 11 -->
         <section class="section-page white-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 11</div>
             <div class="container mx-auto px-6 text-center flex flex-col justify-center h-full">
                 <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">Step1. 온톨로지 기반 데이터 구조화</h2>
@@ -615,6 +613,7 @@
 
         <!-- Page 12 (Restored) -->
         <section class="section-page light-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 12</div>
             <div class="container mx-auto px-6 text-center w-full flex flex-col justify-center h-full">
                 <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Step2. 데이터 표준화</h2>
@@ -632,6 +631,7 @@
 
         <!-- Page 13 -->
         <section class="section-page light-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 13</div>
             <div class="container mx-auto px-6 text-center flex flex-col items-center justify-center h-full">
                  <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Step3. 데이터 정규화</h2>
@@ -653,6 +653,7 @@
 
         <!-- Page 14 -->
         <section class="section-page light-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 14</div>
             <div class="container mx-auto px-4 text-center flex flex-col justify-center h-full">
                 <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Step4. 데이터 라벨링</h2>
@@ -686,6 +687,7 @@
 
         <!-- Page 15 -->
         <section class="section-page light-bg" id="page-15-content">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 15</div>
             <div class="container mx-auto px-6 flex flex-col items-center">
                 <div class="page-header-container">
                     <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900">통합된 광고 데이터</h2>
@@ -710,6 +712,7 @@
 
         <!-- Page 16 -->
         <section class="section-page part-intro-bg-updated text-white text-center" data-theme="dark">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-300">Page 16</div>
             <div class="text-center">
                 <p class="text-3xl font-semibold tracking-wide part-number">Part 3.</p>
                 <h2 class="text-5xl md:text-6xl font-bold mt-4">ATLAS가 그리는 미래</h2>
@@ -718,6 +721,7 @@
 
         <!-- Page 17 -->
         <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 17</div>
             <div class="page-header-container">
                 <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">ATLAS, 우리 비즈니스의 미래입니다.</h2>
                 <p class="page-subtitle mt-4">
@@ -762,61 +766,48 @@
 
         <!-- Page 18 -->
         <section class="section-page light-bg" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 18</div>
             <div class="container mx-auto px-4 max-w-6xl text-center flex flex-col justify-center h-full">
                 <div class="page-header-container mb-8 md:mb-12">
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900">디지털 트윈이 실현하는 업무 혁신의 가치</h2>
                     <p class="page-subtitle mt-6">
                         ATLAS를 통해, 최대 <strong class="text-blue-600">연간 149억원의 영업이익 증대</strong>를 예상할 수 있습니다.
                     </p>
+                    <!-- 아래 작은 글씨 추가 -->
+                    <p class="text-sm text-gray-400 mt-4">인건비 = 급여 + 퇴직급여 (2024년 감사보고서 참조)</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-11 gap-6 items-center">
-                    <div class="md:col-span-5 flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg border border-gray-200 fade-in-up" style="animation-delay: 0.2s;">
-                        <h3 class="text-3xl font-bold text-gray-500 mb-6">As-Is</h3>
-                        <div class="relative w-52 h-52">
-                            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                                <path class="text-gray-200" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.8"></path>
-                                <path class="text-blue-600 donut-chart-path" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"></path>
-                            </svg>
-                            <div class="absolute inset-0 flex flex-col items-center justify-center">
-                                <span class="text-3xl font-bold text-blue-600">35%</span>
+
+                <div class="w-full max-w-5xl">
+                    <div class="grid grid-cols-1 md:grid-cols-11 gap-6 items-center">
+                        <!-- As-Is Box -->
+                        <div class="md:col-span-5 flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg border border-gray-200 fade-in-up" style="animation-delay: 0.2s;">
+                            <h3 class="text-3xl font-bold text-gray-500 mb-4">As-Is</h3>
+                            <p class="text-gray-500 text-lg mb-4 h-12">연간 리소스 투입 비용</p>
+                            <p class="text-6xl font-bold text-gray-800">105<span class="text-4xl ml-2">억원</span></p>
+                        </div>
+                        
+                        <!-- Arrow -->
+                        <div class="md:col-span-1 flex flex-col items-center justify-center text-center fade-in-up" style="animation-delay: 0.4s;">
+                            <div class="w-full flex items-center justify-center py-4">
+                                <svg class="w-16 h-16 text-red-500 transform md:rotate-0 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                             </div>
                         </div>
-                        <div class="mt-6 text-center h-16 flex flex-col justify-center">
-                            <p class="text-gray-500 text-lg whitespace-nowrap">
-                                기존 업무 <span class="font-bold text-gray-700">65%</span>는 <span class="text-xl font-bold atlas-gradient-text">ATLAS가 자동화</span>
-                            </p>
-                        </div>
-                        <div class="mt-2 w-full bg-gray-50 border border-gray-200 rounded-xl p-4">
-                            <p class="text-lg text-gray-600">영업이익</p>
-                            <p class="text-4xl font-bold text-gray-800">80<span class="text-2xl ml-1">억원</span></p>
+
+                        <!-- To-Be Box -->
+                        <div class="md:col-span-5 flex flex-col items-center p-8 bg-white rounded-2xl shadow-lg border border-gray-200 fade-in-up" style="animation-delay: 0.6s;">
+                            <h3 class="text-3xl font-bold text-gray-500 mb-4">To-Be</h3>
+                            <p class="text-gray-500 text-lg mb-4 h-12">ATLAS 도입 후 예상 비용</p>
+                            <p class="text-6xl font-bold text-blue-600">37<span class="text-4xl ml-2">억원</span></p>
                         </div>
                     </div>
-                    <div class="md:col-span-1 flex flex-col items-center justify-center text-center fade-in-up" style="animation-delay: 0.4s;">
-                        <div class="w-full flex items-center justify-center py-4">
-                            <svg class="w-16 h-16 text-blue-500 transform md:rotate-0 rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                        </div>
-                    </div>
-                    <div class="md:col-span-5 flex flex-col items-center p-8 bg-blue-50 rounded-2xl shadow-lg border-2 border-blue-400 fade-in-up" style="animation-delay: 0.6s;">
-                        <h3 class="text-3xl font-bold text-blue-800 mb-6">To-Be</h3>
-                        <div class="relative w-52 h-52">
-                            <svg class="w-full h-full" viewBox="0 0 36 36">
-                                <circle class="text-blue-600" cx="18" cy="18" r="15.9155" fill="currentColor"></circle>
-                            </svg>
-                            <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
-                                <span class="text-3xl font-bold">100%</span>
-                            </div>
-                        </div>
-                        <p class="mt-6 text-blue-700 text-center text-lg h-16 flex items-center whitespace-nowrap">
-                            확보된 리소스를 핵심 업무에 재배치
+
+                    <!-- Result Box -->
+                    <div class="mt-12 bg-blue-50 border-2 border-blue-200 rounded-2xl p-8 fade-in-up" style="animation-delay: 0.8s;">
+                        <p class="text-3xl md:text-4xl font-bold text-gray-800">
+                            연간 
+                            <span class="text-red-500 font-extrabold text-5xl md:text-6xl mx-2">68억원</span>
+                            비용 절감 효과
                         </p>
-                        <div class="mt-2 w-full bg-white border border-blue-300 rounded-xl p-4">
-                            <p class="text-lg text-blue-700">예상 영업이익</p>
-                            <div class="flex items-baseline justify-center">
-                                
-                                <p class="text-4xl font-bold text-blue-600">229<span class="text-2xl ml-1">억원</span></p>
-                                <span class="ml-3 text-green-600 font-bold text-xl">+186%</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -824,6 +815,7 @@
 
         <!-- Page 19 -->
         <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 19</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">업무 혁신, 어디서부터 시작 해야 할까요?</h2>
             <p class="page-subtitle mt-4">
                 DigitalFirst & DigitalTrinity 내 9개 팀, 총 21명(본부장/팀장/팀원)을 인터뷰한 결과,<br>
@@ -876,6 +868,7 @@
 
         <!-- Page 20 -->
         <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 20</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">레퍼런스 공유가 필요한 목적은 무엇일까요?</h2>
             <p class="page-subtitle mt-4">
                 DigitalFirst & DigitalTrinity 내 9개 팀, 총 21명(본부장/팀장/팀원)을 인터뷰한 결과,<br>
@@ -922,6 +915,7 @@
 
         <!-- Page 21 -->
         <section class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 21</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">ATLAS가 그리는 자동화의 미래</h2>
             <p class="page-subtitle mt-4">
                 Project ATLAS는 광고 데이터 통합을 기반으로, 현업에서 요구되는 업무 자동화의 청사진을 제시합니다.<br>
@@ -946,6 +940,7 @@
 
         <!-- Page 22 -->
         <section id="page-22" class="section-page light-bg text-center" data-theme="light">
+            <div class="absolute top-20 left-8 text-lg font-semibold text-gray-400">Page 22</div>
             <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6">Project ATLAS, 앞으로 더 깊고 넓게 뿌리내립니다.</h2>
             <p class="page-subtitle mt-4 whitespace-nowrap">
                 지속적인 제품 고도화와 제품 확장을 통해 데이터 가치 극대화를 실현해 나가겠습니다.
